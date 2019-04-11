@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping>
+	    <class name="model.Customer" table="Customer">
+	     		<id name="id" column="id">
+	     			<generator class="identity" />
+	     		</id>
+		<discriminator column="chvType" type="string"/>
+		<property name="firstname" length="50" not-null = "true" 
+		column = "chvFirNam"  />
+     	 	<property name="surname" length="50" not-null = "true" 
+		column = "chvSurNam"  />
+      	<property name="age" column="intAge" type = "integer"/>
+   
+      	<set name="services" table="LnkCustServ">
+         		<key column="adcustid" />
+       	  	<many-to-many column="adservid" class="model.Service" />
+    		</set>
+    	
+    		<set name="addresses" table ="Address" inverse="true" cascade="all">
+			<key column="adcustid" />
+			<one-to-many class="model.Address"/>
+		</set>
+    		
+		<set name="borrowdetails" table ="BorrowDetail"  
+		inverse="true" cascade="all">
+			<key column="adcustid" />
+	 		<one-to-many class="model.BorrowDetail"/>
+		</set>
+		
+    		<subclass name="model.CustomerVIP" discriminator-value="VIP">
+ 			<property name="frequency" length="10" column = "chvFreq" 
+			not-null = "false" />
+	    	</subclass>
+	    </class>
+
+	</hibernate-mapping>

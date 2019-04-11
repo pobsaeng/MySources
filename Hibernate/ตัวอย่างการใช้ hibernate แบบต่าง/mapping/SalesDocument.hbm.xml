@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.sale">
+	<class name="SalesDocument" table="SALES_DOC">
+		<id name="objectId" column="SALES_DOC_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">SALES_DOC_SEQ</param>
+			</generator>
+		</id>
+		<property name="saleDocNo" column="SALES_DOC_NO" type="string"/>
+		<property name="sapSONo" column="SAP_SO_NO" type="string"/>
+		<property name="sapBillingNo" column="SAP_BILLING_NO" type="string"/>
+		<property name="sapBillingDate" column="SAP_BILLING_DATE" type="date"/>
+		<property name="transDate" column="TRN_DT" type="date"/>
+		<property name="startTime" column="START_DTTM" type="timestamp"/>
+		<property name="createTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="userCreateId" column="CREATE_USER_ID" type="string"/>		
+		<property name="userCreateName" column="CREATE_USER_NM" type="string"/>
+		<property name="numItem" column="NUM_ITEMS" type="integer"/>		
+		<property name="numPrint" column="NUM_PRNTS" type="integer"/>
+		<property name="lastUpdateTime" column="LAST_UPD_DTTM" type="timestamp"/>		
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>
+		<property name="ticketNumber" column="TICKET_NO" type="string"/>
+		<property name="posID" column="POS_ID" type="string"/>
+		<property name="downPayAMT" column="DOWN_PYMT_AMT" type="big_decimal"/>		
+		<property name="remark" column="REMARK" type="string"/>
+		<property name="promiseNo" column="PROMISE_NO" type="string"/>
+		<property name="priceGroupId" column="PRICE_GRP_ID" type="string"/>
+		<property name="salesChannel" column="SALES_CHANNEL" type="string"/>	
+		<property name="quotationId" column="QT_NO" type="string"/>
+		<property name="versionId" column="VERSION_ID" type="string"/>	
+		<many-to-one name="store" column="STORE_ID" lazy="false" not-null="false"/>	
+		<many-to-one name="salesOrderType" column="SALES_ORDER_TYP_ID" lazy="false" not-null="false"/>
+		<many-to-one name="salesDocStatus" column="SALES_DOC_STS_ID" lazy="false"  not-null="false"/>
+		<many-to-one name="soldToCusOID" column="SOLD_TO_CUST_OID" lazy="false" not-null="false"/>
+		<many-to-one name="billToCusOID" column="BILL_TO_CUST_OID" lazy="false" not-null="false"/>
+		<many-to-one name="payerToCustOID" column="PAYER_CUST_OID" lazy="false" not-null="false"/>
+		<many-to-one name="salesDocumentTypeId" column="SALES_DOC_TYP_ID" lazy="false" not-null="true"/>
+		
+		<bag name="salesDocumentGroups" inverse="true" lazy="true" cascade="all">
+			<key column="SALES_DOC_OID" not-null="true"/>
+			<one-to-many class="SalesDocumentGroup"/>
+		</bag>
+		<bag name="salesDocumentItems" inverse="true" lazy="true" cascade="all">
+			<key column="SALES_DOC_OID" not-null="true"/>
+			<one-to-many class="SalesDocumentItem"/>
+		</bag>
+	</class>
+</hibernate-mapping>

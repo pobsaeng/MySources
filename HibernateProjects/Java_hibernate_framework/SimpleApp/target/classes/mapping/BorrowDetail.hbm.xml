@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="model.BorrowDetail">
+
+        <composite-id>
+            <key-many-to-one name="customer" 
+                                 column="adcustid" class="model.Customer" />
+            <key-many-to-one name="book" column="adbookid" class="model.Book"/>
+        </composite-id>
+	
+        <property name="returndate" type="java.util.Date" column="datRet" />
+        <property name="borrowdate" type="java.util.Date" column="datBor"/>
+        <property name="duedate" type="java.util.Date" column="dateDue" />
+	
+	
+    </class>
+</hibernate-mapping>

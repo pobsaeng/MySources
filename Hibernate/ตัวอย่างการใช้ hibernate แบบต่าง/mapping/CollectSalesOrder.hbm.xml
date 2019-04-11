@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="CollectSalesOrder" table="COLL_SALES_ORDER">
+		<id name="objectId" column="COLL_SALES_ORDER_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">COLL_SALES_ORDER_SEQ</param>
+			</generator>
+		</id>
+		<property name="collectSalesOrderNo" column="COLL_SALES_ORDER_NO" type="string" />
+		<many-to-one name="store" column="STORE_ID" lazy="false" not-null="true"/>
+		<property name="transactionDate" column="TRN_DT" type="date"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="createUserId" column="CREATE_USER_ID" type="string"/>
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>	
+		<property name="numOfItems" column="NUM_ITEMS" type="integer"/>
+		<many-to-one name="salesOrderType" column="SALES_ORDER_TYP_ID"  lazy="false" not-null="true"/>
+		<many-to-one name="salesOrderStatus" column="SALES_ORDER_STS_ID" lazy="false" not-null="true"/>
+		<many-to-one name="soldToCustomer" column="SOLD_TO_CUST_OID" lazy="false" not-null="false"/>
+		<many-to-one name="billToCustomer" column="BILL_TO_CUST_OID" lazy="false" not-null="false"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>		
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>		
+		<property name="isNotReject" column="IS_NOT_REJECT" type="yes_no"/>
+		<property name="sapSoNo" column="SAP_SO_NO" type="string"/>		
+		<property name="isHirePurchasePayment" column="IS_HIREPURCHASE_PAYMENT" type="yes_no"/>
+		<property name="salesChannel" column="SALES_CHANNEL" type="string"/>		
+		<property name="contactName" column="CONTACT_NM" type="string"/>
+		<property name="contactPhone" column="CONTACT_TEL" type="string"/>
+		<property name="quotationId" column="QT_NO" type="string"/>
+		<property name="versionId" column="VERSION_ID" type="string"/>	
+		<bag name="collectSalesOrderItems" inverse="true" lazy="true" cascade="all" order-by="SEQ_NO">
+			<key column="COLL_SALES_ORDER_OID" not-null="true"/>
+			<one-to-many class="CollectSalesOrderItem"/>
+		</bag>
+	</class>
+</hibernate-mapping>

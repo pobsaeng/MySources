@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="PromotionSalesItem" table="PRMTN_SALES_ITEM">
+		<id name="objectId" column="PRMTN_SALES_ITEM_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">PRMTN_SALES_ITEM_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="promotionSales" column="PRMTN_SALES_OID" lazy="false" not-null="true"/>
+		<property name="articleId" column="ARTC_ID" type="string"/>
+		<property name="mainUPC" column="MAIN_UPC" type="string"/>
+		<property name="mch3" column="MCH3" type="string"/>
+		<property name="articleDescription" column="ARTC_DSC" type="string"/>
+		<property name="eligibleQuantity" column="ELIGIBLE_QTY" type="big_decimal"/>
+		<property name="unit" column="UNIT" type="string"/>
+		<property name="netAmount" column="NET_AMT" type="big_decimal"/>
+	</class>
+</hibernate-mapping>

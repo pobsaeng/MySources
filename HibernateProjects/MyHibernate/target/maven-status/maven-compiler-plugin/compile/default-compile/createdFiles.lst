@@ -1,0 +1,4 @@
+com\company\util\HibernateUtil.class
+com\company\entity\Supplier.class
+com\mycompany\main\App.class
+com\company\dao\SupplierDao.class

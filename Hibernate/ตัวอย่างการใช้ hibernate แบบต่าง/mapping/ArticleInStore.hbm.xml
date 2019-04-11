@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.mch">
+	<class name="ArticleInStore" table="ARTC_IN_STORE">
+		<composite-id name="articleInStoreId" class="ArticleInStore$Id">
+			<key-property name="storeId" column="STORE_ID" type="string"/>
+			<key-property name="articleId" column="ARTC_ID" type="string"/>
+		</composite-id>
+		<property name="rpType" column="RPTYPE" type="string"/>
+		<property name="supplySourceId" column="SUP_SRC_ID" type="string"/>
+		<property name="roundingValue" column="ROUNDING_VAL" type="big_decimal"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="refIDocNo" column="REF_IDOC_NO" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<many-to-one name="vendor" column="VENDOR_ID" lazy="false" not-null="false" />
+		<property name="vendorLeadTimeDays" column="VENDOR_LEAD_TIME_DAYS" type="integer"/>        
+		<property name="dcLeadTimeDays" column="DC_LEAD_TIME_DAYS" type="integer"/>   
+		<property name="vendorPartNo" column="VENDOR_PARTNO" type="string"/>     
+		<property name="purchaseValidFrom" column="PURCHASE_VALID_FROM" type="date"/>
+		<property name="isBlockPurchase" column="IS_BLOCK_PURCHASE" type="yes_no"/>  
+		<property name="blockSellValidFrom" column="BLOCK_SELL_VALID_FROM" type="date"/>
+		<property name="blockSell" column="BLOCK_SELL" type="string"/>  
+		<many-to-one name="blockCode" column="BLOCK_CODE_ID" lazy="false" not-null="false"/>
+		<property name="valuationClass" column="VALUATION_CLASS" type="string"/>  
+		<property name="valuationCategory" column="VALUATION_CAT" type="string"/>
+	</class>
+</hibernate-mapping>

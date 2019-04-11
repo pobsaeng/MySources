@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="model.Service" table="Service">
+
+		<id name="id" column="id">
+			<generator class="identity" />
+		</id>
+		<property name="des" length="50" not-null="true"
+			column="chvDes" />
+
+		<set name="customers" table="LnkCustServ">
+			<key column="adservid" />
+			<many-to-many column="adcustid" class="model.Customer" />
+		</set>
+
+	</class>
+
+</hibernate-mapping>
+
+

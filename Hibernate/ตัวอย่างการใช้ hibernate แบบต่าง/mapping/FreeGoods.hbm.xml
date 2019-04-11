@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.mch">
+	<class name="FreeGoods" table="FREE_GOODS">
+		<composite-id name="compositeId" class="FreeGoods$Id">
+			<key-property name="mainArticleId" column="MAIN_ARTC_ID" type="string"/>
+			<key-property name="freeGoodsId" column="FREE_GOODS_ID" type="string"/>
+			<key-property name="startDate" column="START_DT" type="date"/>
+			<key-property name="sellUnit" column="SELL_UNIT" type="string"/>
+		</composite-id>
+		<property name="quantity" column="QTY" type="integer"/>
+    	<many-to-one name="mainArticle" column="MAIN_ARTC_ID" insert="false" update="false" not-null="true"/>
+    	<many-to-one name="premiumArticle" insert="false" update="false" not-null="true">
+    		<column name="FREE_GOODS_ID"></column>
+    		<column name="START_DT"></column>
+    	</many-to-one>
+	</class>
+</hibernate-mapping>

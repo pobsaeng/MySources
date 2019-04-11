@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.customer">
+	<class name="CustomerInterface" table="CUSTOMER_INTERFACE">
+		<id name="sapId" column="SAP_ID" type="string"/>   
+		<property name="customerGroup" column="CUST_GRP" type="string"/> 
+		<property name="firstNm" column="FIRST_NM" type="string"/> 
+		<property name="lastNm" column="LAST_NM" type="string"/> 
+		<property name="oldUid" column="SEARCH_TERM2" type="string"/> 
+		<property name="newUid" column="NEW_SEARCH_TERM2" type="string"/>     
+		<property name="infType" column="INF_TYPE" type="string"/>     
+		<property name="createDate" column="INF_DTTM" type="timestamp"/>     
+	</class>
+</hibernate-mapping>
+	

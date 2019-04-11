@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="MemberCardCoverage" table="MBR_CARD_CVRGE">
+		<composite-id name="memberCardCoverageId" class="MemberCardCoverage$Id">
+			<key-property name="cardNo" column="CARD_NO" type="string"/>
+			<key-property name="promotionOid" column="PRMTN_OID" type="long"/>
+		</composite-id>
+		<many-to-one name="promotion" column="PRMTN_OID" lazy="false" insert="false" update="false" not-null="true"/>
+		<property name="cardNo" column="CARD_NO"  insert="false" update="false" not-null="true" />
+ 
+	</class>
+</hibernate-mapping>

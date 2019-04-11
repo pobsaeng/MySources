@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="Tender" table="TENDER">
+		<id name="tenderId" column="TENDER_ID" type="string"/>
+		<property name="tenderNo" column="TENDER_NO" type="string"/>
+		<property name="name" column="TENDER_NM" type="string"/>
+		<property name="isHPC" column="IS_HPC" type="yes_no"/>
+		<property name="isPromotionParticipation" column="IS_PRMTN_PARTICIPATION" type="yes_no"/>
+		<property name="isDenomination" column="IS_DENOMINATION" type="yes_no"/>
+		<property name="isPos" column="IS_POS" type="yes_no"/>
+		<property name="isSo" column="IS_SO" type="yes_no"/>
+		<property name="type" column="TENDER_TYP" type="integer"/>
+		<property name="posCondType" column="POS_COND_TYP" type="string"/>
+		<property name="tenderLimit" column="TENDER_LIMIT" type="big_decimal"/>
+		<property name="startDate" column="START_DT" type="date"/>
+		<property name="endDate" column="END_DT" type="date"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<property name="saleType" column="SALES_TYP" type="string"/>
+		<property name="sapAccountId"  column="SAP_ACC_ID" type="string"  />
+		<property name="hirepurchasecompoid" column="HIRE_PURCHASE_COMP_OID" type="big_decimal"/>
+		<property name="tenderGrpId" column="TENDER_GRP_ID" type="string"/>
+		<bag name="tenderDenominations" inverse="true" lazy="true" cascade="all-delete-orphan">
+			<key column="TENDER_ID" not-null="true"/>
+			<one-to-many class="TenderDenomination"/>
+		</bag>
+	</class>
+</hibernate-mapping>

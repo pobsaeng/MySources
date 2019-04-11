@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 5, 2013 11:03:01 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+    <class name="SmsMbrCardTypCvrge" table="SMS_MBR_CARD_TYP_CVRGE" >
+        <composite-id name="id" class="SmsMbrCardTypCvrgeId">
+            <key-property name="smsPrmtnOid" type="long">
+                <column name="SMS_PRMTN_OID"  />
+            </key-property>
+            <key-property name="cardTypId" type="string">
+                <column name="CARD_TYP_ID" />
+            </key-property>
+        </composite-id>
+        <property name="isActive" type="yes_no">
+            <column name="IS_ACTIVE"  />
+        </property>
+        <many-to-one name="smsPrmtn" class="SmsPrmtn" fetch="select" 
+            insert="false" update="false" lazy="false" not-null="true">
+            <column name="SMS_PRMTN_OID"  />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

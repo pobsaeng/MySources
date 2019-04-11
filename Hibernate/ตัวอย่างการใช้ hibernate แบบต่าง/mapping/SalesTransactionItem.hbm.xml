@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.sale">
+	<class name="SalesTransactionItem" table="SALES_TRN_ITEM">
+		<id name="objectId" column="SALES_TRN_ITEM_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">SALES_TRN_ITEM_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="salesTransaction" column="SALES_TRN_OID" lazy="false" not-null="true"/>
+		<property name="seqNo" column="SEQ_NO" type="integer"/>
+		<property name="itemUPC" column="ITEM_UPC" type="string"/>
+		<property name="mainUPC" column="MAIN_UPC" type="string"/>
+		<property name="articleNo" column="ARTC_NO" type="string"/>
+		<property name="mc9" column="MC9" type="string"/>
+		<many-to-one name="taxCode" column="TAX_CODE_ID" lazy="false" not-null="true"/>
+		<property name="description" column="SALES_TRN_ITEM_DSC" type="string"/>
+		<property name="quantity" column="QTY" type="big_decimal"/>
+		<property name="returnedQuantity" column="RET_QTY" type="big_decimal"/>
+		<property name="unit" column="UNIT" type="string"/>
+		<property name="unitPrice" column="UNIT_PRICE" type="big_decimal"/>
+		<property name="realUnitPrice" column="REAL_UNIT_PRICE" type="big_decimal"/>
+		<many-to-one name="priceType" column="PRICE_COND_TYP_ID" lazy="false" not-null="true"/>
+		<property name="isClearanceArticle" column="IS_CLEARANCE_ARTC" type="yes_no"/>
+		<property name="memberDiscountAmount" column="MBR_DSCNT_AMT" type="big_decimal"/>
+		<property name="specialDiscountAmount" column="SPC_DSCNT_AMT" type="big_decimal"/>
+		<property name="netItemAmount" column="NET_ITEM_AMT" type="big_decimal"/>
+		<property name="salesPersonId" column="SALES_PERSON_ID" type="string"/>
+		<property name="isScannedItem" column="IS_SCANNED_ITEM" type="yes_no"/>
+		<property name="isSOItem" column="IS_SO_ITEM" type="yes_no"/>
+		<property name="homeCareNo" column="HOME_CARE_NO" type="string"/>
+		<property name="sapNo" column="SAP_EVENT_NO" type="string"/> 
+		<property name="preSaleNo" column="SALES_ORDER_NO" type="string"/>
+		<property name="sapBillItemNo" column="SAP_BILL_ITEM_NO" type="string"/>
+		<property name="saleOrderSeqNo" column="SO_SEQ_NO" type="string"/>
+		<property name="is_freegoods" column="IS_FREEGOODS" type="yes_no"/>
+		<property name="prmtn_id" column="PRMTN_ID" type="string"/>
+		<property name="collSalesOrderNo" column="COLL_SALES_ORDER_NO" type="string"/>
+		<property name="sapSeqNo" column="SAP_SEQ_NO" type="string"/>
+		<property name="batch" column="BATCH" type="string"/>
+		<property name="quantityBackStore" column="RECEIVE_BACK_STORE" type="big_decimal"/>
+		<property name="incentive" column="INCENTIVE" type="string"/>
+		<property name="incentiveNM" column="INCENTIVE_NM" type="string"/>
+		<property name="isCalRate" column="IS_CAL_RATE" type="string"/>
+		
+		<bag name="itemDiscounts" inverse="true" lazy="false" cascade="all">
+			<key column="SALES_TRN_ITEM_OID" not-null="true"/>
+			<one-to-many class="ItemDiscount"/>
+		</bag>
+		<bag name="salesTransactionSetItems" inverse="true" lazy="false" cascade="all">
+			<key column="SALES_TRN_ITEM_OID" not-null="true"/>
+			<one-to-many class="SalesTransactionSetItem"/>
+		</bag>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.authorization">
+	<class name="UserRole" table="USER_ROLE">
+		<id name="objectId" column="USER_ROLE_OID" type="long"/>
+		<property name="code" column="USER_ROLE_CD" type="string"/>
+		<property name="name" column="USER_ROLE_NM" type="string"/>
+		<property name="description" column="USER_ROLE_DSC" type="string"/>
+		<property name="authorizationLevel" column="AUTH_LV" type="integer"/>
+		<many-to-one name="limitProfile" column="LIMIT_PRF_OID" lazy="false" not-null="true"/>
+		<property name="isPosAccessProfile" column="IS_POS_ACCS_PRF" type="yes_no"/>
+		<many-to-one name="posAccessProfile" column="POS_ACCS_PRF_OID" lazy="false" not-null="false"/>
+		<property name="isWebAccessProfile" column="IS_WEB_ACCS_PRF" type="yes_no"/>
+		<many-to-one name="webAccessProfile" column="WEB_ACCS_PRF_OID" lazy="false" not-null="false"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.message">
+	<class name="CustomerSurveyGroup" table="CUST_SURV_GRP">
+		<id name="objectId" column="CUST_SURV_GRP_OID" type="long"/>
+		<property name="customerSurveyGroupId" column="CUST_SURV_GRP_ID" type="string"/>
+		<property name="startDate" column="START_DT" type="date"/>
+		<property name="endDate" column="END_DT" type="date"/>
+		<property name="description" column="SURV_DSC" type="string"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<bag name="customerSurveyQuestions" inverse="true" lazy="false" cascade="all-delete-orphan">
+			<key column="CUST_SURV_GRP_OID" not-null="true"/>
+			<one-to-many class="CustomerSurveyQuestion"/>
+		</bag>
+	</class>
+</hibernate-mapping>

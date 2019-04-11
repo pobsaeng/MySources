@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.sale">
+	<class name="RefundSetItem" table="REFUND_SET_ITEM">
+		<id name="objectId" column="REFUND_SET_ITEM_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">REFUND_SET_ITEM_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="refundItem" column="REFUND_ITEM_OID" lazy="false" not-null="true"/>
+		<property name="mainUPC" column="MAIN_UPC" type="string"/>
+		<property name="description" column="SALES_TRN_SET_ITEM_DSC" type="string"/>
+		<property name="unit" column="UNIT" type="string"/>
+		<property name="qtyInSet" column="QTY_IN_SET" type="big_decimal"/>
+		<property name="quantity" column="QTY" type="big_decimal"/>
+	</class>
+</hibernate-mapping>

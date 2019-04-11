@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="PromotionNoReceiveRedemption" table="PRMTN_NO_RECEIVE_RDPTN">
+		<id name="objectId" column="PRMTN_NO_RECEIVE_RDPTN_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">PRMTN_NO_RECEIVE_RDPTN_SEQ</param>
+			</generator>		
+		</id>
+		<many-to-one name="promotionRedemption" column="PRMTN_RDPTN_OID" lazy="false" not-null="true"/>
+		<property name="promotionId" column="PRMTN_ID" type="string"/>
+		<many-to-one name="promotionArticleType" column="PRMTN_ARTC_TYP_ID" lazy="false" not-null="true"/>
+		<property name="promotionArticleId" column="PRMTN_ARTC_ID" type="string"/>
+		<property name="promotionArticleDescription" column="PRMTN_ARTC_DSC" type="string"/>		
+		<property name="eligibleQuantity" column="ELIGIBLE_QTY" type="big_decimal"/>
+		<property name="unit" column="UNIT" type="string"/>
+		<property name="receivedStatus" column="RECEIVED_STS_ID" type="string" />
+	</class>
+</hibernate-mapping>

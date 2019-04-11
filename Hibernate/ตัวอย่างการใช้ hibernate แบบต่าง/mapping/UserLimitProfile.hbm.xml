@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.authorization">
+	<class name="UserLimitProfile" table="USER_LIMIT_PRF">
+		<id name="objectId" column="USER_LIMIT_PRF_OID" type="long"/>
+		<property name="code" column="USER_LIMIT_PRF_CD" type="string"/>        
+		<property name="name" column="USER_LIMIT_PRF_NM" type="string"/>        
+		<property name="description" column="USER_LIMIT_PRF_DSC" type="string"/>   
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>     
+		<bag name="roles" lazy="true" inverse="true" cascade="all">
+			<key column="LIMIT_PRF_OID" not-null="true"/>
+			<one-to-many class="UserRole"/>
+		</bag>
+		<bag name="profileLimits" lazy="true" inverse="true" cascade="all-delete-orphan">
+			<key column="LIMIT_PRF_OID" not-null="true"/>
+			<one-to-many class="ProfileLimit"/>
+		</bag>
+	</class>
+</hibernate-mapping>

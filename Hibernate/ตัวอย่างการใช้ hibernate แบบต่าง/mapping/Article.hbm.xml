@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.mch">
+	<class name="Article" table="ARTC">
+		<id name="articleId" column="ARTC_ID" type="string" />
+		<property name="name" column="ARTC_NM" type="string"/>        
+		<property name="description" column="ARTC_DSC" type="string" />
+		<property name="baseUnit" column="BASE_UNIT" type="string"/>        
+		<property name="itemCategoryGroup" column="ITEM_CAT_GRP" type="string"/>        
+		<property name="isPriceRequired" column="IS_PRICE_REQ" type="yes_no"/>        
+		<property name="isQuantityRequired" column="IS_QTY_REQ" type="yes_no"/>        
+		<property name="isLotRequired" column="IS_LOT_REQ" type="yes_no"/>        
+		<property name="blockSell" column="BLOCK_SELL" type="string"/>        
+		<property name="isBlockPurchase" column="IS_BLOCK_PURCHASE" type="yes_no"/>        
+		<property name="brand" column="BRAND" type="string" />
+		<property name="vendorLeadTimeDays" column="VENDOR_LEAD_TIME_DAYS" type="integer"/>        
+		<property name="dcLeadTimeDays" column="DC_LEAD_TIME_DAYS" type="integer"/>        
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>        
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>        
+		<many-to-one name="taxCode" column="TAX_CODE_ID" lazy="false" not-null="false"/>        
+		<many-to-one name="mch" column="MCH_ID" lazy="false" not-null="true" />
+		<many-to-one name="articleType" column="ARTC_TYP_ID" lazy="false" not-null="false" />
+		<many-to-one name="articleCategory" column="ARTC_CAT_ID" lazy="false" not-null="false" />
+		<many-to-one name="supplySource" column="SUP_SRC_ID" lazy="false" not-null="false" />
+		<many-to-one name="dcProfile" column="DC_PRF_ID" lazy="false" not-null="false" />
+		<many-to-one name="parentGenericArticle" column="PARENT_GEN_ARTC_ID" cascade="none" not-null="false"/>
+		<many-to-one name="vendor" column="VENDOR_ID" lazy="false" not-null="false" />
+		<many-to-one name="blockCode" column="BLOCK_CODE_ID" lazy="false" not-null="false"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="refIDocNo" column="REF_IDOC_NO" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<property name="vendorPartNo" column="VENDOR_PARTNO" type="string"/>
+		<property name="blockSellValidFrom" column="BLOCK_SELL_VALID_FROM" type="date"/>
+		<property name="container" column="CONTAINER" type="string"/>
+		<property name="valuationClass" column="VALUATION_CLASS" type="string" />
+		<property name="valuationCategory" column="VALUATION_CAT" type="string" />
+		<property name="blockPurcheaseValidFrom" column="BLOCK_PUR_VALID_FROM" type="date"/>
+		
+		
+		<bag name="mainUPCs" lazy="false" cascade="delete" inverse="true" order-by="ISDEFAULT desc">
+			<key column="ARTC_ID" not-null="true"/>
+			<one-to-many class="MainUPC"/>
+		</bag>
+		<bag name="vendorUPCs" lazy="false" cascade="delete" inverse="true">
+			<key column="ARTC_ID" not-null="true"/>
+			<one-to-many class="VendorUPC"/>
+		</bag>
+		<bag name="articlePricings" lazy="true" cascade="delete" inverse="true">
+			<key column="ARTC_ID" not-null="true"/>
+			<one-to-many class="ArticlePricing"/>
+		</bag>
+		<bag name="articleSets" lazy="false" cascade="all" inverse="true">
+			<key column="ARTC_SET_ID" not-null="true"/>
+			<one-to-many class="ArticleSet"/>
+		</bag>
+	</class>
+</hibernate-mapping>

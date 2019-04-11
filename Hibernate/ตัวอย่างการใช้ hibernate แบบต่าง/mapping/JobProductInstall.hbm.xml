@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="JobProductInstall" table="M_DS_JOBPRD_INST">
+		<composite-id name="jobProductInstallId" class="JobProductInstall$Id">
+			<key-property name="shippingpointOID" column="SHIPPNT" type="string"/>
+			<key-property name="jobTypeOID" column="JOBTYPE" type="string"/>
+		</composite-id>
+		<many-to-one name="shippingpoint" column="SHIPPNT" lazy="false" insert="false" update="false" not-null="true"/> 
+		<many-to-one name="jobType" column="JOBTYPE" lazy="false" insert="false" update="false" not-null="true"/> 
+		<property name="isShowInstall" column="IS_SHOW_INST" type="yes_no"/>
+		<property name="createDateTime" column="CRDATE" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="package-name">
+    <class name="class-name" table="table-name">
+        <id name="attribute" column="PK-column" type="hibernate-type">
+            <generator class="sequence" >
+            	<param name="sequence">[table-name]_SEQ</param>
+            </generator>
+        </id>
+
+		<property name="attribute" column="column-name" type="hibernate-type"/>
+		
+		<many-to-one name="attribute" column="column-name" lazy="false" not-null="true"/>
+		
+		<bag name="attribute" inverse="true" lazy="true" cascade="all">
+			<key column="FK-column" not-null="true"/>
+			<one-to-many class="FK-class-name"/>
+		</bag>
+		
+		<joined-subclass name="subclass-name" table="table-name">
+			<key column="join-column"/>
+			<property name="attribute" column="column-name" type="hibernate-type"/>        
+		</joined-subclass>
+    </class>
+</hibernate-mapping>

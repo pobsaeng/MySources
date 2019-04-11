@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="DsPatTime" table="M_DS_PAT_TIME">
+		<composite-id name="dsPatTimeId" class="DsPatTime$Id">
+			<key-property name="shippingPointId" column="SHIPPNT" type="string"/>
+			<key-property name="patternId" column="PAT" type="string"/>
+			<key-property name="startDate" column="DATE_START" type="date"/>
+			<key-property name="timeNumber" column="TIMENO" type="integer"/>
+		</composite-id>
+		<property name="timeName" column="TIMENAME" type="string"/>
+		<property name="endDate" column="DATE_END" type="date"/>
+		<property name="status" column="STATUS" type="yes_no"/>
+		<property name="createDateTime" column="CRDATE" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

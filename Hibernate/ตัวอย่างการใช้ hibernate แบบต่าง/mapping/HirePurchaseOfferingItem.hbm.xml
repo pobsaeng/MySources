@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="HirePurchaseOfferingItem" table="HP_OFFRNG_ITEM">
+		<id name="objectId" column="HP_OFFRNG_ITEM_OID" type="long"/>
+		<many-to-one name="hirePurchaseOffering" column="HP_OFFRNG_OID" lazy="false" update="false" not-null="true"/>
+		<many-to-one name="article" column="ARTC_ID" lazy="false" not-null="true"/>
+		<property name="interestPercent" column="INT_PRCNT" type="big_decimal"/>
+		<property name="termInMonth" column="TERM_IN_MONTH" type="integer"/>
+		<property name="isActive" column="IS_ACTIVE" type="yes_no" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="MSTArticleOCPBFeature" table="MST_ARTICLE_OCPB_FEATURE">
+		<composite-id name="mSTArticleOCPBFeatureId" class="MSTArticleOCPBFeature$Id">
+			<key-property name="articleId" column="ARTICLE" type="string"/>
+			<key-property name="featureTitle" column="FEATURE_TITLE" type="string"/>
+		</composite-id>
+		<property name="featureDesc" column="FEATURE_DESC" type="string" />
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/> 
+		<property name="refPubId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

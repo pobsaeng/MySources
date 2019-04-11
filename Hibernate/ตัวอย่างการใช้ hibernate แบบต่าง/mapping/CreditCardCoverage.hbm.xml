@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="CreditCardCoverage" table="CR_CARD_CVRGE">
+		<composite-id name="creditCardCoverageId" class="CreditCardCoverage$Id">
+			<key-property name="promotionOid" column="PRMTN_OID" type="long"/>
+			<key-property name="creditCardId" column="CR_CARD_ID" type="string"/>
+			<key-property name="creditCardRangeOid" column="CR_CARD_RANGE_OID" type="long"/>
+		</composite-id>
+		<many-to-one name="promotion" column="PRMTN_OID" lazy="false" insert="false" update="false" not-null="true"/>
+		<many-to-one name="creditCard" column="CR_CARD_ID" lazy="false" insert="false" update="false" not-null="true"/>
+		<many-to-one name="creditCardRange" column="CR_CARD_RANGE_OID" lazy="false" insert="false" update="false" not-null="true"/>
+	</class>
+</hibernate-mapping>

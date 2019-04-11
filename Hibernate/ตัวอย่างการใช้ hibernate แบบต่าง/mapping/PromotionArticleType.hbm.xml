@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="PromotionArticleType" table="PRMTN_ARTC_TYP">
+		<id name="promotionArticleTypeId" column="PRMTN_ARTC_TYP_ID" type="string"/>
+		<property name="name" column="PRMTN_ARTC_TYP_NM" type="string"/>
+		<property name="isPricingArticle" column="IS_PRICING_ARTC" type="yes_no"/>
+		<property name="isCorperatePromotion" column="IS_CORP_PRMTN" type="yes_no"/>
+		<property name="isCategoryPromotion" column="IS_CAT_PRMTN" type="yes_no"/>
+		<property name="isArticlePromotion" column="IS_ARTC_PRMTN" type="yes_no"/>
+		<property name="isTenderPromotion" column="IS_TENDER_PRMTN" type="yes_no"/>
+		<property name="isStock" column="IS_STOCK" type="yes_no"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

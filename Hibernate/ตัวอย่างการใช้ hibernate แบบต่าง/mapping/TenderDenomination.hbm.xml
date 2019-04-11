@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="TenderDenomination" table="TENDER_DENOM">
+		<id name="objectId" column="TENDER_DENOM_OID" type="long"/>
+		<property name="description" column="TENDER_DENOM_DSC" type="string"/>
+		<property name="value" column="TENDER_DENOM_VAL" type="big_decimal"/>
+		<many-to-one name="tender" column="TENDER_ID" lazy="false" not-null="true"/>
+	</class>
+</hibernate-mapping>

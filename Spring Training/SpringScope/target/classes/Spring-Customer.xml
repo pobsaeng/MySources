@@ -1,0 +1,21 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="customerService" 
+         class="com.company.services.CustomerService" 
+         scope="singleton"/>
+   
+    <bean id="cat" class="com.company.animal.impl.Cat">
+        <property name="fly" value="false"/>
+        <property name="legs" value="4"/>
+        <property name="say" value="meow meow!!"/> 
+    </bean>
+
+    <bean id="bird" class="com.company.animal.impl.Cat">
+        <property name="fly" value="true"/>
+        <property name="legs" value="2"/>
+        <property name="say" value="Jib Jib!!"/> 
+    </bean>		
+</beans>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="DsVendorGroup" table="M_DS_VENDOR_GROUP">
+		<composite-id name="vendorGroupId" class="DsVendorGroup$Id">
+			<key-property name="dsVendorId" column="VDNO" type="string"/>
+			<key-property name="hpVendorId" column="HPVDNO" type="string"/>
+		</composite-id>
+		<many-to-one name="dsVendor" column="VDNO" lazy="false" insert="false" update="false" not-null="true"/> 
+		<many-to-one name="hpVendor" column="HPVDNO" lazy="false" insert="false" update="false" not-null="true"/> 
+		<property name="createDateTime" column="CRDATE" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="Bank" table="BANK">
+		<id name="bankId" column="BANK_ID" type="string"/>
+		<property name="thaiName" column="TH_NM" type="string"/>
+		<property name="englishName" column="EN_NM" type="string"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+	</class>
+</hibernate-mapping>

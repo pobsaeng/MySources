@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.log">
+	<class name="WSLog" table="WS_LOG">
+		<id name="objectId" column="WS_LOG_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">WS_LOG_SEQ</param>
+			</generator>
+		</id>
+		<property name="type" column="TYPE" type="string"/>
+		<property name="no" column="NO" type="string"/>
+		<property name="wsDate" column="WS_DTTM" type="timestamp"/>
+		<property name="status" column="STATUS" type="string"/>
+		<property name="message1" column="MESSAGE1" type="string"/>
+		<property name="XML" column="XML" type="string"/>
+	</class>
+</hibernate-mapping>

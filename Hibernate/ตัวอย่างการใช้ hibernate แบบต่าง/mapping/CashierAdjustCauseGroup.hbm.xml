@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.cashier">
+	<class name="CashierAdjustCauseGroup" table="CSH_ADJ_CAUSE_GRP">
+	
+		<id name="cashierAdjustCauseGroup" column="CSH_ADJ_CAUSE_GRP_ID" type="string" />
+		<property name="cashierGroupDesc" column="CAUSE_GRP_DESC" type="string"/>	
+		<property name="cashierGroupSeq" column="CAUSE_GRP_SEQ" type="string"/>	
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+		<property name="createDttm" column="CREATE_DTTM" type="timestamp"/>		
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>	
+		<property name="refPubId" column="REF_PUB_ID" type="string"/>
+    </class>
+</hibernate-mapping>

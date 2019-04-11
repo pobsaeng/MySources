@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.sale">
+	<class name="SalesTransactionPartner" table="SALES_TRAN_PARTNER">
+		<composite-id name="salesTransactionPartnerId" class="SalesTransactionPartner$Id">
+			<key-property name="parentSalesOid" column="PARENT_SALES_OID" type="long"/>
+			<key-property name="salesTranOid" column="SALES_TRAN_OID" type="long"/>
+		</composite-id>	
+		<many-to-one name="salesTransactionMapParent" column="PARENT_SALES_OID" lazy="false" insert="false" update="false" not-null="true"/>
+		<many-to-one name="salesTransactionMapChield" column="SALES_TRAN_OID" lazy="false" insert="false" update="false" not-null="true"/>
+	</class>
+</hibernate-mapping>

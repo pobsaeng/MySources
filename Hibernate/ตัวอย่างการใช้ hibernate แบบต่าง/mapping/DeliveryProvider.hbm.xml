@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="DeliveryProviderGroup" table="DELI_PROVIDE_GRP">
+		<composite-id name="deliveryProviderGroupId" class="DeliveryProviderGroup$Id">
+			<key-property name="shippingPointId" column="SHIPPNT" type="string"/>
+			<key-property name="supplySourceId" column="SUPPLY_SRC_ID" type="string"/>
+			<key-property name="poTypeId" column="PO_TYP_ID" type="string"/>
+		</composite-id>
+		<many-to-one name="shippingPoint" column="SHIPPNT" lazy="false" insert="false" update="false" not-null="true"/>
+		<many-to-one name="supplySource" column="SUPPLY_SRC_ID" lazy="false" insert="false" update="false" not-null="true"/>
+		<many-to-one name="poType" column="PO_TYP_ID" lazy="false" insert="false" update="false" not-null="true"/>
+		<property name="descripTion" column="DESCRIPTION" type="string"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublicDate" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="leferencePublicId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

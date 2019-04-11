@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="SequenceYear" table="SEQ_YEAR">
+		<composite-id name="sequenceYearId" class="SequenceYear$Id">
+			<key-property name="name" column="SEQ_NM" type="string"/>
+			<key-property name="year" column="SEQ_YEAR" type="string"/>
+		</composite-id>
+		<version name="version" column="VERSION"/>
+		<property name="start" column="SEQ_START" type="integer"/>
+	</class>
+</hibernate-mapping>

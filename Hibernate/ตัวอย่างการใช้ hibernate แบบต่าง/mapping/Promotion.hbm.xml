@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="Promotion" table="PROMOTION">
+		<id name="objectId" column="PRMTN_OID" type="long"/>
+		<property name="promotionId" column="PRMTN_ID" type="string"/>
+		<property name="promotionTypeId" column="PRMTN_TYP_ID" type="string"/>
+		<property name="categoryId" column="PRMTN_CAT_ID" type="string"/>
+		<property name="name" column="PRMTN_NM" type="string"/>
+		<property name="description" column="PRMTN_DSC" type="string"/>
+		<property name="startDate" column="START_DT" type="date"/>
+		<property name="endDate" column="END_DT" type="date"/>
+		<property name="createDate" column="CREATE_DTTM" type="timestamp"/>
+		<property name="isPrint" column="IS_SALES_TICKET_PRNT" type="yes_no"/>
+		<property name="isEveryDay" column="IS_EVERY_DAY" type="yes_no"/>
+		<property name="isMonday" column="IS_MONDAY" type="yes_no"/>
+		<property name="isTuesday" column="IS_TUESDAY" type="yes_no"/>
+		<property name="isWednesday" column="IS_WEDNESDAY" type="yes_no"/>
+		<property name="isThursday" column="IS_THURSDAY" type="yes_no"/>
+		<property name="isFriday" column="IS_FRIDAY" type="yes_no"/>
+		<property name="isSaturday" column="IS_SATURDAY" type="yes_no"/>
+		<property name="isSunday" column="IS_SUNDAY" type="yes_no"/>
+		<property name="isAllDay" column="IS_ALL_DAY" type="yes_no"/>
+		<property name="startTime" column="START_TM" type="time"/>
+		<property name="endTime" column="END_TM" type="time"/>
+		<property name="actualStartTime" column="ACTL_START_TM" type="time"/>
+		<property name="actualEndTime" column="ACTL_END_TM" type="time"/>
+		<property name="storeCoverage" column="STORE_CVRGE" type="string"/>
+		<property name="memberCardTypeCoverage" column="MBR_CARD_TYP_CVRGE" type="string"/>
+		<property name="buyConditionType" column="BUY_COND_TYP" type="string"/>
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp" insert="false" update="false"/>
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<property name="tenderCoverage" column="TENDER_CVRGE" type="string"/>
+		<property name="blockCodeCoverage" column="BLOCK_CODE_CVRGE" type="string"/>
+		<property name="promotionCoverage" column="PRMTN_CVRGE" type="string"/>
+		<property name="creditCardCoverage" column="CR_CARD_CVRGE" type="string"/>
+		<property name="salesTypeCoverage" column="SALES_TYP_CVRGE" type="string"/>
+		<property name="discountConditionTypeCoverage" column="DSCNT_COND_TYP_CVRGE" type="string"/>
+		
+		<bag name="storeCoverages" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_OID"/>
+			<one-to-many class="StoreCoverage"/>
+		</bag>
+		<bag name="memberCoverages" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_OID"/>
+			<one-to-many class="MemberCoverage"/>
+		</bag>
+		<bag name="memberCardCoverages" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_OID"/>
+			<one-to-many class="MemberCardCoverage"/>
+		</bag>
+		<bag name="tenderCoverages" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_OID"/>
+			<one-to-many class="TenderCoverage"/>
+		</bag>
+		<bag name="blockCodeCoverages" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_OID"/>
+			<one-to-many class="BlockCodeCoverage"/>
+		</bag>
+		<bag name="promotionCoverages" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_OID" not-null="true"/>
+			<one-to-many class="PromotionCoverage"/>
+		</bag>
+		<bag name="creditCardCoverages" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_OID"/>
+			<one-to-many class="CreditCardCoverage"/>
+		</bag>
+		<bag name="salesTypeCoverages" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_OID" not-null="true"/>
+			<one-to-many class="SalesTypeCoverage"/>
+		</bag>
+		<bag name="discountConditionTypeCoverages" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_OID" not-null="true"/>
+			<one-to-many class="DiscountConditionTypeCoverage"/>
+		</bag>		
+		<bag name="promotionArticleTiers" inverse="true" lazy="true" cascade="all" order-by="TIER_VAL ASC">
+			<key column="PRMTN_OID"/>
+			<one-to-many class="PromotionArticleTier"/>
+		</bag>
+		<joined-subclass name="ArticlePromotion" table="ARTC_PRMTN">
+			<key column="PRMTN_OID"/>
+			<property name="buyingQuantity" column="BUYING_QTY" type="integer"/>
+			<property name="quantityConditionType" column="QTY_COND_TYP" type="integer"/>
+			<property name="buyingLimitQuantityPerBill" column="BUYING_LIMIT_QTY_PER_BILL" type="integer"/>
+			<property name="isPromotionSet" column="IS_PRMTN_SET" type="yes_no"/>
+			<property name="sellUnit" column="SELL_UNIT" type="string"/>
+			<property name="mainUPC" column="MAIN_UPC" type="string"/>
+			<many-to-one name="article" column="ARTC_ID" lazy="false" not-null="false"/>
+			<bag name="promotionSetArticles" inverse="true" lazy="true" cascade="all">
+				<key column="PRMTN_OID"/>
+				<one-to-many class="PromotionSetArticle"/>
+			</bag>
+		</joined-subclass>
+		<joined-subclass name="CorporatePromotion" table="CORP_CAT_PRMTN">
+			<key column="PRMTN_OID"/>
+			<property name="brandCoverage" column="BRAND_CVRGE" type="string"/>
+			<property name="vendorCoverage" column="VENDOR_CVRGE" type="string"/>
+			<property name="isIncludeSapPromotionPrice" column="IS_INCLD_SAP_PRMTN_PRICE" type="yes_no"/>
+			<property name="isApplicableOtherCorperatePromotion" column="IS_APPLCBL_OTH_CORP_PRMTN" type="yes_no"/>
+			<property name="minimumBuyingAmount" column="MIN_BUYING_AMT" type="big_decimal"/>
+			<bag name="brandCoverages" inverse="true" lazy="true" cascade="all">
+				<key column="PRMTN_OID"/>
+				<one-to-many class="BrandCoverage"/>
+			</bag>
+			<bag name="vendorCoverages" inverse="true" lazy="true" cascade="all">
+				<key column="PRMTN_OID"/>
+				<one-to-many class="VendorCoverage"/>
+			</bag>
+			<bag name="hierarchyConditions" inverse="true" lazy="true" cascade="all">
+				<key column="PRMTN_OID"/>
+				<one-to-many class="HierarchyCondition"/>
+			</bag>
+			<joined-subclass name="TenderPromotion" table="TENDER_PRMTN">
+				<key column="PRMTN_OID"/>
+				<property name="tenderPromotionType" column="TENDER_PRMTN_TYP" type="string"/>
+				<many-to-one name="tender" column="TENDER_ID" lazy="false" not-null="false"/>
+				<many-to-one name="creditCard" column="CR_CARD_ID" lazy="false" not-null="false"/>
+				<many-to-one name="hirePurchaseCompany" column="HIRE_PURCHASE_COMP_OID" lazy="false" not-null="false"/>
+				<many-to-one name="priceGroup" column="PRICE_GRP_ID" lazy="false" not-null="false"/>
+			</joined-subclass>
+		</joined-subclass>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.message">
+	<class name="CustomerSurveyQuestion" table="CUST_SURV_QST">
+		<id name="objectId" column="CUST_SURV_QST_OID" type="long"/>
+		<property name="questionNo" column="QST_NO" type="integer"/>
+		<property name="description" column="QST_DSC" type="string"/>
+		<many-to-one name="customerSurveyGroup" column="CUST_SURV_GRP_OID" lazy="false" not-null="true"/>
+		<bag name="customerSurveyAnswers" inverse="true" lazy="false" cascade="all-delete-orphan">
+			<key column="CUST_SURV_QST_OID" not-null="true"/>
+			<one-to-many class="CustomerSurveyAnswer"/>
+		</bag>
+	</class>
+</hibernate-mapping>

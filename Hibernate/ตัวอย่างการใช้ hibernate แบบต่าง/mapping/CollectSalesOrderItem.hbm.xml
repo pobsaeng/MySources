@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="CollectSalesOrderItem" table="COLL_SALES_ORDER_ITEM">
+		<id name="objectId" column="COLL_SALES_ORDER_ITEM_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">COLL_SALES_ORDER_ITEM_SEQ</param>   
+			</generator>
+		</id>
+		<many-to-one name="collectSalesOrder" column="COLL_SALES_ORDER_OID" lazy="false" not-null="true"/>
+		<property name="seqNo" column="SEQ_NO" type="integer"/>
+		<property name="salesOrderNo" column="SALES_ORDER_NO" type="string"/>
+		<property name="storeId" column="STORE_ID" type="string"/>
+		<property name="salesTransactionDate" column="SO_TRN_DT" type="date"/>
+	</class>
+</hibernate-mapping>

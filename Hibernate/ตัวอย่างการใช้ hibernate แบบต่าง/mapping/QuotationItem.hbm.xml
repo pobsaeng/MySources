@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.quotation">
+	<class name="QuotationItem" table="QUOTATION_ITEM">
+		<id name="objectId" column="QT_ITEM_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">QUOTATION_ITEM_SEQ</param>
+			</generator>
+		</id>	
+		<many-to-one name="quotation" column="QT_OID" lazy="false" not-null="true"/>
+		<property name="itemId" column="ITEM_NO" type="string"/>
+		<property name="articleId" column="ARTC_NO" type="string"/>
+		<property name="qty" column="QTY" type="big_decimal"/>
+		<property name="unit" column="UNIT" type="string"/>
+		<property name="unitPrice" column="UNIT_PRICE" type="big_decimal"/>
+		<property name="shippingPointId" column="SHIPPING_POINT_ID" type="string"/>
+		<property name="deliveryId" column="DELIVERY_QNO" type="string"/>
+		<property name="isReserveDc" column="IS_RESERVE_DC" type="yes_no"/>
+		<property name="isPoMeths" column="IS_PO_METHS" type="yes_no"/>
+		<property name="batch" column="BATCH" type="string"/>
+		<property name="isSpecialOrder" column="IS_SPECIAL_ORDER" type="yes_no"/>
+		<property name="isSpecialDTS" column="IS_SPECIAL_DTS" type="yes_no"/>
+		<property name="remark" column="REMARK" type="string"/>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 19, 2013 1:37:54 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping package="com.ie.icon.domain">
+    <class name="SkuType" table="SKU_TYPE" >
+        <id name="mchId" type="string">
+            <column name="MCH_ID"  />
+        </id>
+        <property name="isActive" type="yes_no">
+            <column name="IS_ACTIVE"  />
+        </property>
+        <property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPubDttm" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="refPubId" column="REF_PUB_ID" type="string"/>
+		<one-to-one name="mch" class="com.ie.icon.domain.mch.MCH"></one-to-one>
+    </class>
+</hibernate-mapping>

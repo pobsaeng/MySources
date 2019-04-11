@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="ItemRedemptionHistory" table="ITEM_RDPTN_HIS">
+		<id name="objectId" column="ITEM_RDPTN_HIS_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">ITEM_RDPTN_HIS_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="promotionRedemptionItem" column="PRMTN_PREMIUM_RDPTN_OID" lazy="false" not-null="true"/>
+		<property name="action" column="ACTION" type="string"/>
+		<property name="actionDateTime" column="ACTION_DTTM" type="timestamp"/>
+		<property name="quantity" column="QTY" type="big_decimal"/>
+		<property name="performUserName" column="PERFORM_USER_NM" type="string"/>
+		<property name="authorizerName" column="AUTH_NM" type="string"/>
+		<property name="authorizerId" column="AUTH_ID" type="string"></property>
+		<property name="remark" column="REMARK" type="string"/>
+	</class>
+</hibernate-mapping>

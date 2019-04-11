@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.cashier">
+	<class name="CashierTransactionAdjust" table="CSH_TRN_ADJ">
+		<id name="objectId" column="CSH_TRN_ADJ_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">CSH_TRN_ADJ_SEQ</param>
+			</generator>
+		</id>
+		<property name="transactionDate" column="TRN_DT" type="date"/>
+		<property name="storeId" column="STORE_ID" type="string"/>
+		<property name="stsId" column="STS_ID" type="character"/>
+		<property name="infDttm" column="INF_DTTM" type="timestamp"/>
+		<property name="infUserId" column="INF_USER_ID" type="string"/>
+		<property name="jvno" column="JV_NO" type="string"/>		
+		<property name="documentNo" column="DOCUMENT_NO" type="string"/>				
+		<property name="cancelDttm" column="CANCEL_DTTM" type="timestamp"/>	
+		<property name="cancelUserId" column="CANCEL_USER_ID" type="string"/>
+		<property name="createDttm" column="CREATE_DTTM" type="timestamp"/>			
+		<property name="createUserId" column="CREATE_USER_ID" type="string"/>		
+		<property name="lastUpdDttm" column="LAST_UPD_DTTM" type="timestamp"/>			
+		<property name="updateUserId" column="UPDATE_USER_ID" type="string"/>	
+		<property name="cancelDocumentNo" column="CANCEL_DOCUMENT_NO" type="string"/>
+		<property name="cancelJvno" column="CANCEL_JV_NO" type="string"/>		
+		<property name="infUserNm" column="INF_USER_NM" type="string"/>
+		<property name="createUserNm" column="CREATE_USER_NM" type="string"/>
+		<property name="updateUserNm" column="UPDATE_USER_NM" type="string"/>
+		<property name="cancelUserNm" column="CANCEL_USER_NM" type="string"/>
+		<property name="physicalYear" column="PHYSICAL_YEAR" type="string"/>
+		<bag name="cashierTransactionAdjustItems" inverse="true" lazy="false" cascade="all">
+			<key column="CSH_TRN_ADJ_OID" not-null="true"/>
+			<one-to-many class="CashierTransactionAdjustItem"/>
+		</bag>	
+	</class>
+</hibernate-mapping>

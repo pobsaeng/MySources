@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="HierarchyCondition" table="HIER_COND">
+		<id name="objectId" column="HIER_COND_OID" type="long"/>
+		<many-to-one name="productHierarchy" column="PROD_HIER_OID" lazy="false" not-null="true"/>
+		<property name="productHierarchyId" column="PROD_HIER_ID" type="string"/>        
+		<property name="productHierarchyDescription" column="PROD_HIER_DSC" type="string"/>        
+		<property name="isInclude" column="IS_INCLD" type="yes_no"/>        
+		<many-to-one name="promotion" column="PRMTN_OID" lazy="false" not-null="true"/>
+	</class>
+</hibernate-mapping>

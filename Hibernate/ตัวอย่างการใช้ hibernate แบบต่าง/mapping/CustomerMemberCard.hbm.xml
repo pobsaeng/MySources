@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.customer">
+	<class name="CustomerMemberCard" table="CUST_MBR_CARD">
+		<id name="objectId" column="CARD_OID" type="long"/>
+		<property name="sapId" column="SAP_ID" type="string"/>
+		<many-to-one name="memberCardType" column="MBR_CARD_TYP_ID" lazy="false" not-null="true"/>
+		<property name="cardNumber" column="CARD_NO" type="string"/>        
+		<property name="name" column="CARD_NM" type="string"/>
+		<property name="status" column="CARD_STS" type="character"/>
+		<property name="expiredDate" column="EXP_DT" type="string"/>        
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>        
+		<property name="currentRewardPoint" column="CUR_RWD_PNT" type="big_decimal"/>        
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="date"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<property name="creditAmt" column="CREDIT_AMT" type="big_decimal"/>  
+		<property name="usedAmt" column="USED_AMT" type="big_decimal"/>  
+	</class>
+</hibernate-mapping>

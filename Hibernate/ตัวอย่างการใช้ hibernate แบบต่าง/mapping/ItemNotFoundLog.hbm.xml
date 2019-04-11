@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.log">
+	<class name="ItemNotFoundLog" table="ITEM_NOT_FOUND_LOG">
+		<id name="objectId" column="ITEM_NOT_FOUND_LOG_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">ITEM_NOT_FOUND_LOG_SEQ</param>
+			</generator>
+		</id>
+		<property name="posNo" column="POS_NO" type="string"/>
+		<property name="scannedUPC" column="SCAN_UPC" type="string"/>
+		<property name="scannedDateTime" column="SCAN_DTTM" type="timestamp"/>
+		<property name="scannedUserId" column="SCAN_USER_ID" type="string"/>
+		<property name="scannedUserName" column="SCAN_USER_NM" type="string"/>
+		<many-to-one name="store" column="STORE_ID" lazy="false" not-null="true"/>
+	</class>
+</hibernate-mapping>

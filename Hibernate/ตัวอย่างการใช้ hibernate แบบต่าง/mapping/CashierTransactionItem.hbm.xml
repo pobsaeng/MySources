@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.cashier">
+	<class name="CashierTransactionItem" table="CSH_TRN_ITEM">
+		<id name="objectId" column="CSH_TRN_ITEM_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">CSH_TRN_ITEM_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="cashierTransaction" column="CSH_TRN_OID" lazy="false" not-null="true"/>
+		<property name="trnAmt" column="TRN_AMT" type="big_decimal"/>
+		<many-to-one name="tenderDenom" column="TENDER_DENOM_OID" lazy="false" not-null="false"/>
+		<property name="qty" column="QTY" type="integer"/>			
+	</class>
+</hibernate-mapping>

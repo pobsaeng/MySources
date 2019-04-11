@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping>
+	   <class name="model.Address">
+		 <id name="id" column="id">
+	            <generator class="identity" />
+		 </id>
+	
+		<property name="homeno" length="50" not-null = "true" column = 
+		"chvHomNumber" />
+		<property name="road" length="50" not-null = "true" column = 
+		"chvRoad" />
+		<property name="province" length="50" not-null = "true" column =
+		 "chvProvince" />
+		<property name="zipcode" length="25" not-null = "true" column = 
+		"chvZipCode" />
+		</class>
+	</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.vendorcoupon">
+	<class name="transactionVendorCouponExpo" table="TRN_VENDOR_COUPON_EX">
+		<composite-id name="transactionVendorCouponExpoId" class="transactionVendorCouponExpo$Id">
+			<key-property name="physicalYear" column="PHYSICAL_YEAR" type="string"/>
+			<key-property name="physicalMonth" column="PHYSICAL_MONTH" type="string"/>
+			<key-property name="storeId" column="STORE_ID" type="string"/>
+			<key-property name="vendorId" column="VENDOR_ID" type="string"/>
+		</composite-id>
+		<property name="physicalYear" column="PHYSICAL_YEAR" type="string"/>
+		<property name="physicalMonth" column="PHYSICAL_MONTH" type="string"/>
+		<many-to-one name="storeId" column="STORE_ID" lazy="false" not-null="true"/>
+		<many-to-one name="vendorId" column="VENDOR_ID" lazy="false" not-null="false" />
+		<property name="vendorName" column="VENDOR_NM" type="string"/>
+	</class>
+</hibernate-mapping>

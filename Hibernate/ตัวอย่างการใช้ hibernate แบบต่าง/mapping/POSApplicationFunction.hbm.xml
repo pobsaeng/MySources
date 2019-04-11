@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.authorization">
+	<class name="POSApplicationFunction" table="POS_APP_FUNC">
+		<id name="objectId" column="POS_APP_FUNC_OID" />
+		<property name="code" column="POS_APP_FUNC_CD" type="string"/>        
+		<property name="name" column="POS_APP_FUNC_NM" type="string"/>        
+		<property name="description" column="POS_APP_FUNC_DSC" type="string"/>        
+		<property name="className" column="CLASS_NM" type="string"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>        
+	</class>
+</hibernate-mapping>

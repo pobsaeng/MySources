@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.sale">
+	<class name="RefundItem" table="REFUND_ITEM">
+		<id name="objectId" column="REFUND_ITEM_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">REFUND_ITEM_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="refund" column="REFUND_OID" lazy="false" not-null="true"/>
+		<property name="itemUPC" column="ITEM_UPC" type="string"/>
+		<many-to-one name="taxCode" column="TAX_CODE" lazy="false" not-null="true"/>
+		<property name="description" column="REFUND_INV_ITEM_DSC" type="string"/>
+		<property name="quantity" column="QTY" type="big_decimal"/>
+		<property name="unit" column="UNIT" type="string"/>
+		<property name="unitPrice" column="UNIT_PRICE" type="big_decimal"/>
+		<property name="realUnitPrice" column="REAL_UNIT_PRICE" type="big_decimal"/>
+		<property name="memberDiscountAmount" column="MBR_DSCNT_AMT" type="big_decimal"/>
+		<property name="specialDiscountAmount" column="SPC_DSCNT_AMT" type="big_decimal"/>
+		<property name="netItemAmount" column="NET_ITEM_AMT" type="big_decimal"/>
+		<property name="isDefectItem" column="IS_DEFECT_ITEM" type="yes_no"/>
+		<property name="remark" column="REMARK" type="string"/>
+		<property name="seqNo" column="SEQ_NO" type="integer"/>
+		<property name="refSeqNo" column="REF_SEQ_NO" type="integer"/>		
+		<property name="isClearanceArticle" column="IS_CLEARANCE_ARTC" type="yes_no"/>
+		<property name="sapNo" column="SAP_EVENT_NO" type="string"/> 
+		<property name="isReturnReceive" column="IS_RETURN_RECEIVE" type="yes_no"/>
+		<property name="returnedQuantity" column="RET_QTY" type="big_decimal" />
+		
+		<property name="waitReturnQuantity" column="WAIT_RET_QTY" type="big_decimal" />
+		<property name="sentReturnQuantity" column="SENT_RET_QTY" type="big_decimal" />
+		
+		<property name="waitCnQuantity" column="WAIT_CN_QTY" type="big_decimal" />
+		<property name="sentCnQuantity" column="SENT_CN_QTY" type="big_decimal" />
+		<property name="batch" column="BATCH" type="string"/>
+		
+		<many-to-one name="rejectReason" column="REJ_REASON_ID" lazy="false" not-null="false"/>
+		<bag name="refundSetItems" inverse="true" lazy="false" cascade="all">
+			<key column="REFUND_ITEM_OID" not-null="true"/>
+			<one-to-many class="RefundSetItem"/>
+		</bag>
+		<bag name="itemDiscounts" inverse="true" lazy="false" cascade="all">
+			<key column="REFUND_ITEM_OID" not-null="true"/>
+			<one-to-many class="RefundItemDiscount"/>
+		</bag>
+	</class>
+</hibernate-mapping>

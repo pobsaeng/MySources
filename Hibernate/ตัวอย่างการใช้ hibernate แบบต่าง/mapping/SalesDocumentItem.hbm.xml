@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.sale">
+	<class name="SalesDocumentItem" table="SALES_DOC_ITEM">
+		<id name="objectId" column="SALES_DOC_ITEM_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">SALES_DOC_ITEM_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="salesDocOId" column="SALES_DOC_OID" lazy="false" not-null="true"/>
+		<many-to-one name="salesDocGroupId" column="SALES_DOC_GRP_OID" lazy="false" not-null="false"/>
+		<property name="seqNo" column="SEQ_NO" type="integer"/>
+		<property name="mainUPC" column="MAIN_UPC" type="string"/>
+		<property name="parentGenericArticleNo" column="PARENT_GEN_ARTC_ID" type="string"/>
+		<property name="ArticleNo" column="ARTC_NO" type="string"/>
+		<property name="mc9" column="MC9" type="string"/>
+		<many-to-one name="taxCodeId" column="TAX_CODE_ID" lazy="false" not-null="false"/>
+		<property name="salesDocDescription" column="SALES_DOC_ITEM_DSC" type="string"/>
+		<property name="quantity" column="QTY" type="big_decimal"/>
+		<property name="isMainProduct" column="IS_MAIN_PRD" type="yes_no"/>
+		<property name="isReserveDC" column="IS_RESERVE_DC" type="yes_no"/>		
+		<property name="unit" column="UNIT" type="string"/>
+		<property name="unitPrice" column="UNIT_PRICE" type="big_decimal"/>		
+		<property name="netItemAmount" column="NET_ITEM_AMT" type="big_decimal"/>
+		<property name="batch" column="BATCH" type="string"/>		
+		<property name="salesPersonId" column="SALES_PERSON_ID" type="string"/>
+		<property name="salesPersonName" column="SALES_PERSON_NM" type="string"/>
+		<property name="remark" column="REMARK" type="string"/>
+		<property name="isDownPayment" column="IS_DOWN_PYMT" type="yes_no"/>
+		<property name="downPaymentDateTime" column="DOWN_PYMT_DTTM" type="timestamp"/>
+		<property name="rejectReasonId" column="REJ_REASON_ID" type="string"/>
+		<property name="supplySourceId" column="SUP_SRC_ID" type="string"/>
+		<property name="blockCodeId" column="BLOCK_CODE_ID" type="string"/>
+		<property name="idBlockPurchase" column="IS_BLOCK_PURCHASE" type="yes_no"/>
+		<property name="priceRequest" column="IS_PRICE_REQ" type="yes_no"/>
+		<property name="priceCoundTypeId" column="PRICE_COND_TYP_ID" type="string"/>
+		<property name="salesOrderNo" column="SALES_ORDER_NO" type="string"/>
+		<property name="sapSONo" column="SAP_SO_NO" type="string"/>
+		<many-to-one name="poType" column="PO_TYP_ID" lazy="false" not-null="false"/>
+		<property name="poDate" column="PO_DT" type="timestamp"/>
+		<property name="poQuantity" column="PO_QTY" type="big_decimal"/>
+		<many-to-one name="poStore" column="PO_STORE_ID" lazy="false" not-null="false"/> 
+		<property name="sapDoNo" column="SAP_DO_NO" type="string"/>
+		<property name="sapBillItemNo" column="SAP_BILL_ITEM_NO" type="string"/>
+		<property name="saleSeqNo" column="SALE_SEQ_NO" type="string"/>
+		<property name="memberDiscountAmount" column="MBR_DSCNT_AMT" type="big_decimal"/>
+		<property name="specialDiscountAmount" column="SPC_DSCNT_AMT" type="big_decimal"/>
+		<property name="incentive" column="INCENTIVE" type="string"/>
+		<property name="incentiveNM" column="INCENTIVE_NM" type="string"/>
+		
+		<bag name="salesDocumentSetItems" inverse="true" lazy="true" cascade="all">
+			<key column="SALES_DOC_ITEM_OID" not-null="false"/>
+			<one-to-many class="SalesDocumentSetItem"/>
+		</bag>
+	</class>
+</hibernate-mapping>

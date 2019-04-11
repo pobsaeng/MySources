@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.customer">
+	<class name="MemberCardType" table="MBR_CARD_TYP">
+		<id name="memberCardTypeId" column="MBR_CARD_TYP_ID" type="string"/>
+		<property name="name" column="MBR_CARD_TYP_NM" type="string"/>  
+		<property name="isPaymentCard" column="IS_PYMT_CARD" type="integer"/>
+		<property name="isPromotionParticipation" column="IS_PRMTN_PARTICIPATION" type="yes_no"/>
+		<property name="createUser" column="CREATE_USER_NM" type="string"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<property name="isDiscountCard1" column="IS_DSCNT_CARD_NO1" type="yes_no"/>
+		<property name="isDiscountCard2" column="IS_DSCNT_CARD_NO2" type="yes_no"/>
+		<property name="isRewardCard" column="IS_RWD_CARD_NO" type="yes_no"/>
+		<property name="isProCard" column="IS_PRO_CARD" type="yes_no"/>
+		<many-to-one name="discountConditionType" column="DSCNT_COND_TYP_ID" lazy="false" not-null="false"/>
+		<bag name="memberCardPrivileges" inverse="true" lazy="true" cascade="all">
+			<key column="MBR_CARD_TYP_ID" not-null="true"/>
+			<one-to-many class="MemberCardPrivilege"/>
+		</bag>
+	</class>
+</hibernate-mapping>

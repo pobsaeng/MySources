@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.authentication">
+	<class name="User" table="USR">
+		<id name="objectId" column="USER_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">USER_SEQ</param>
+			</generator>
+		</id>
+		<property name="userId" column="USER_ID" type="string"/>
+		<property name="name" column="USER_NM" type="string"/>
+		<property name="password" column="USER_PSSWD" type="string"/>
+		<property name="isStoreUser" column="IS_STORE_USER" type="yes_no"/>
+		<property name="employeeCode" column="EMP_CD" type="string"/>
+		<property name="lastLogin" column="LAST_LOGIN" type="timestamp"/>
+		<property name="failedPasswordAttempts" column="FAILED_PSSWD_ATTMPS" type="integer"/>
+		<property name="status" column="SIGN_ON_STS" type="character"/>
+		<property name="posNo" column="POS_NO" type="string"/>
+		<property name="isLockedOut" column="IS_LOCKED_OUT" type="yes_no"/>
+		<property name="passwordExpiredDate" column="PSSWD_EXP_DT" type="date"/>
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+		<property name="inActiveDate" column="INACTIVE_DT" type="date"/>
+		<property name="sessionId" column="SESSION_ID" type="string"/>
+		<many-to-one name="userRole" column="USER_ROLE_OID" lazy="false" not-null="true"/>
+		<many-to-one name="store" column="STORE_ID" lazy="false" not-null="false"/>
+		<many-to-one name="passwordPolicy" column="PSSWD_POLICY_OID" lazy="false" not-null="true"/>
+		<bag name="passwordHistories" inverse="true" lazy="true" cascade="all">
+			<key column="USER_OID" not-null="true"/>
+			<one-to-many class="PasswordHistory"/>
+		</bag>
+	</class>
+</hibernate-mapping>

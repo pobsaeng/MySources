@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="SalesOrderSetItem" table="SALES_ORDER_SET_ITEM">
+		<id name="objectId" column="SALES_ORDER_SET_ITEM_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">SALES_ORDER_SET_ITEM_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="salesOrderItem" column="SALES_ORDER_ITEM_OID" lazy="false" not-null="true"/>
+		<property name="mc9" column="MC9" type="string"/>
+		<property name="mainUPC" column="MAIN_UPC" type="string"/>
+		<property name="description" column="SALES_ORDER_SET_ITEM_DSC" type="string"/>
+		<property name="unit" column="UNIT" type="string"/>
+		<property name="quantityInSet" column="QTY_IN_SET" type="big_decimal"/>
+		<property name="quantity" column="QTY" type="big_decimal"/>
+		<property name="isScannedItem" column="IS_SCANNED_ITEM" type="yes_no"/>
+		<property name="articleId" column="ARTC_ID" type="string"/>	
+		<property name="sapSeqNo" column="SAP_SEQ_NO" type="string"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.message">
+	<class name="CustomerSurveyAnswer" table="CUST_SURV_ANS">
+		<id name="objectId" column="CUST_SURV_ANS_OID" type="long"/>
+		<property name="choiceNo" column="CHOICE_NO" type="integer"/>
+		<property name="description" column="ANS_DSC" type="string"/>
+		<many-to-one name="customerSurveyQuestion" column="CUST_SURV_QST_OID" lazy="false" not-null="true"/>
+	</class>
+</hibernate-mapping>

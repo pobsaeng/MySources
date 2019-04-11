@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.sale">
+	<class name="InvoiceTender" table="INV_TENDER">
+		<id name="objectId" column="INV_TENDER_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">INV_TENDER_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="taxInvoice" column="TAX_INV_OID" lazy="false" not-null="true"/>
+		<many-to-one name="tender" column="TENDER_ID" lazy="false" not-null="true"/>
+		<property name="tenderAmount" column="TENDER_AMT" type="big_decimal"/>
+		<property name="referenceInfo" column="REF_INFO" type="string"/>
+		<property name="isNewTender" column="IS_NEW_TENDER" type="yes_no"/>
+		<property name="authorizeUserName" column="AUTH_USER_NM" type="string"/>
+	</class>
+</hibernate-mapping>

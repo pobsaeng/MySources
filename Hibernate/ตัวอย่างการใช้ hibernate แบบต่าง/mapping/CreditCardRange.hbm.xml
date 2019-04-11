@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="CreditCardRange" table="CR_CARD_RANGE">
+		<id name="objectId" column="CR_CARD_RANGE_OID" type="long"/>
+		<property name="creditCardRangeId" column="CR_CARD_RANGE_ID" type="string"/>        
+		<property name="cardRange" column="CARD_RANGE" type="integer"/>
+		<property name="cardType" column="CREDIT_DEBIT_TYPE" type="string"/>  
+		<property name="cardVendor" column="CREDIT_CARD_TYPE" type="string"/>  
+		<property name="cardLevel" column="CREDIT_CARD_LEVEL" type="string"/>	
+		<property name="isShowOnTicket" column="IS_SHOW_ON_TICKET" type="string"/>	
+		<many-to-one name="creditCard" column="CR_CARD_ID" lazy="false" not-null="false"/>
+	</class>
+</hibernate-mapping>

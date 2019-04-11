@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.quotation">
+	<class name="Quotation" table="QUOTATION">
+		<id name="objectId" column="QT_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">QUOTATION_SEQ</param>
+			</generator>
+		</id>	
+		<property name="quotationId" column="QT_NO" type="string"/>
+		<property name="versionId" column="VERSION_ID" type="string"/>
+		<property name="quotationDate" column="QT_DT" type="date"/>
+		<property name="store" column="CREATE_BY_STORE" type="string"/>
+		<many-to-one name="custId" column="CUST_NO" lazy="false" not-null="false"/>
+		<property name="transDate" column="TRN_DT" type="date"/>
+		<property name="status" column="QT_STS_ID" type="string"/>
+		<property name="quotationTypeId" column="QT_TYP_ID" type="string"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="UPDATE_USER_ID" type="string"/>
+		<property name="salesChannel" column="SALES_CHANNEL" type="string"/>
+		
+		<bag name="quotationItems" inverse="true" lazy="true" cascade="all" order-by="ITEM_NO">
+			<key column="QT_OID" not-null="true"/>
+			<one-to-many class="QuotationItem"/>
+		</bag>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="DsSpecWork" table="M_DS_SPEC_WORK">
+		<id name="specNo" column="SPEC_WORK_NO" type="string"/>
+		<property name="specDesc" column="SPEC_WORK_DESC" type="string"/>
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+		<property name="createDate" column="CRDATE" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

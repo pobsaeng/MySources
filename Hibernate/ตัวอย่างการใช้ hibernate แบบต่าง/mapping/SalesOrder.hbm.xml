@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="SalesOrder" table="SALES_ORDER">
+		<id name="objectId" column="SALES_ORDER_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">SALES_ORDER_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="store" column="STORE_ID" lazy="false" not-null="true"/>
+		<property name="salesOrderNo" column="SALES_ORDER_NO" type="string"/>
+		<property name="sapSONo" column="SAP_SO_NO" type="string"/>
+		<property name="sapBillingNo" column="SAP_BILLING_NO" type="string"/>
+		<many-to-one name="salesOrderType" column="SALES_ORDER_TYP_ID" lazy="false" not-null="true"/>
+		<many-to-one name="salesOrderStatus" column="SALES_ORDER_STS_ID" lazy="false" not-null="true"/>
+		<property name="transactionDate" column="TRN_DT" type="date"/>
+		<property name="startDateTime" column="START_DTTM" type="timestamp"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="createUserId" column="CREATE_USER_ID" type="string"/>
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>		
+		<property name="numOfItems" column="NUM_ITEMS" type="integer"/>
+		<property name="numPrints" column="NUM_PRNTS" type="integer"/>		
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>		
+		<property name="ticketNo" column="TICKET_NO" type="string"/>
+		<many-to-one name="soldToCustomer" column="SOLD_TO_CUST_OID" lazy="false" not-null="false"/>
+		<many-to-one name="billToCustomer" column="BILL_TO_CUST_OID" lazy="false" not-null="false"/>
+		<many-to-one name="payerCustomer" column="PAYER_CUST_OID" lazy="false" not-null="false"/>
+		<property name="downPaymentAmount" column="DOWN_PYMT_AMT" type="big_decimal"/>
+		<property name="isNotReject" column="IS_NOT_REJECT" type="yes_no"/>
+		<property name="salesType" column="SALES_TYPE" type="string"/>	
+		<property name="quotationId" column="QT_NO" type="string"/>
+		<property name="versionId" column="VERSION_ID" type="string"/>	
+		<property name="isHirepurchasePayment" column="IS_HIREPURCHASE_PAYMENT" type="yes_no"/>
+		<property name="contactName" column="CONTACT_NM" type="string" />
+		<property name="contactTel" column="CONTACT_TEL" type="string" />
+		<property name="salesChannel" column="SALES_CHANNEL" type="string"/>		
+		<many-to-one name="siteGroup" column="SITE_GRP" lazy="false" not-null="false"/>	
+		<many-to-one name="profitCenter" column="PROFIT_CENTER" lazy="false" not-null="false"/>	
+		<bag name="salesOrderGroups" inverse="true" lazy="true" cascade="all">
+			<key column="SALES_ORDER_OID" not-null="true"/>
+			<one-to-many class="SalesOrderGroup"/>
+		</bag>
+		<bag name="salesOrderItems" inverse="true" lazy="true" cascade="all" order-by="SEQ_NO">
+			<key column="SALES_ORDER_OID" not-null="true"/>
+			<one-to-many class="SalesOrderItem"/>
+		</bag>
+	</class>
+</hibernate-mapping>

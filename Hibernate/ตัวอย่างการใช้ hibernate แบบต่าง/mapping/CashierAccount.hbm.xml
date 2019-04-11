@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.cashier">
+	<class name="CashierAccount" table="CSH_ACC">
+		<id name="cashierAccId" column="CSH_ACC_ID" type="string"/>
+		<property name="description" column="DESCRIPTION" type="string"/>
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+		<property name="lastUpdDttm" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="updateUserId" column="UPDATE_USER_ID" type="string"/>
+		<property name="lastPubDttm" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="refPubId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

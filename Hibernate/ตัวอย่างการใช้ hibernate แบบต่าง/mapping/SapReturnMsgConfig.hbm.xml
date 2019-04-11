@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="SapReturnMsgConfig" table="SAP_RET_MSG_CONFIG">
+		<id name="objectId" column="SAP_RET_MSG_CONFIG_OID" type="long"></id>    
+		<property name="returnType" column="RET_TYP" type="string"/>
+		<property name="returnNumber" column="RET_NUMBER" type="string"/>
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2013 6:16:28 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+    <class name="SmsPrmtn" table="SMS_PRMTN" >
+    	<id name="objectId" column="SMS_PRMTN_OID" type="long" />
+        <property name="smsPrmtnId" type="string">
+            <column name="SMS_PRMTN_ID"  />
+        </property>
+        <property name="smsPrmtnDesc" type="string">
+            <column name="SMS_PRMTN_DESC"  />
+        </property>
+        <property name="ivr" type="string">
+            <column name="IVR"  />
+        </property>
+        <property name="cashPerSms" type="big_decimal">
+            <column name="CASH_PER_SMS"  />
+        </property>
+        <property name="startDt" type="date">
+            <column name="START_DT"  />
+        </property>
+        <property name="endDt" type="date">
+            <column name="END_DT"  />
+        </property>
+        <property name="sendEndDt" type="date">
+            <column name="SEND_END_DT"  />
+        </property>
+        <property name="footer1" type="string">
+            <column name="FOOTER1" />
+        </property>
+        <property name="footer2" type="string">
+            <column name="FOOTER2"  />
+        </property>
+        <property name="isActive" type="yes_no" >
+            <column name="IS_ACTIVE"  />
+        </property>
+        <property name="storeCvrge" type="string">
+            <column name="STORE_CVRGE"/>
+        </property>
+        <property name="createDttm" type="timestamp">
+            <column name="CREATE_DTTM" />
+        </property>
+        <property name="createUserId" type="string">
+            <column name="CREATE_USER_ID"  />
+        </property>
+        <property name="lastUpdateDate" type="timestamp">
+            <column name="LAST_UPD_DTTM" />
+        </property>
+        <property name="lastUpdateUser" type="string">
+            <column name="LAST_UPD_USER_ID" />
+        </property>
+        <property name="lastPubDttm" type="timestamp">
+            <column name="LAST_PUB_DTTM" />
+        </property>
+        <property name="refPubId" type="string">
+            <column name="REF_PUB_ID" />
+        </property>
+        <bag name="smsStroeCvrge" inverse="true" lazy="true" cascade="all">
+			<key>
+				<column name="SMS_PRMTN_OID" not-null="true" />
+			</key>
+			<one-to-many class="SmsStoreCvrge" />
+			<filter name="activeStroeCvrgeFilter" condition="IS_ACTIVE = :activeParam " />
+		</bag>
+		<bag name="smsMbrCardTypCvrge" inverse="true" lazy="true" cascade="all">
+			<key>
+				<column name="SMS_PRMTN_OID" not-null="true" />
+			</key>
+			<one-to-many class="SmsMbrCardTypCvrge" />
+			<filter name="activeMbrCardFilter" condition="IS_ACTIVE = :activeParam " />
+		</bag>
+    </class>
+    <filter-def name="activeStroeCvrgeFilter">
+		<filter-param name="activeParam" type="yes_no" />
+	</filter-def>
+	<filter-def name="activeMbrCardFilter">
+		<filter-param name="activeParam" type="yes_no" />
+	</filter-def>
+</hibernate-mapping>

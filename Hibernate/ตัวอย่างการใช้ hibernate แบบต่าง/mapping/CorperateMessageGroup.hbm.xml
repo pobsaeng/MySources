@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.message">
+	<class name="CorperateMessageGroup" table="CORP_MSG_GRP">
+		<id name="objectId" column="CORP_MSG_GRP_OID" type="long"/>
+		<property name="messageType" column="MSG_TYP" type="string"/>
+		<property name="description" column="MSG_DSC" type="string"/>
+		<property name="startDate" column="START_DT" type="date"/>
+		<property name="endDate" column="END_DT" type="date"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<bag name="corperateMessages" inverse="true" lazy="false" order-by="SEQ_NO asc" cascade="all-delete-orphan">
+			<key column="CORP_MSG_GRP_OID" not-null="true"/>
+			<one-to-many class="CorperateMessage"/>
+		</bag>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.sale">
+	<class name="Refund" table="REFUND">
+		<id name="objectId" column="REFUND_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">REFUND_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="store" column="STORE_ID" lazy="false" not-null="true"/>
+		<property name="refundId" column="REFUND_INV_ID" type="string"/>
+		<property name="typeId" column="REFUND_TYP_ID" type="character"/>
+		<property name="returnStatus" column="RETURN_STATUS" type="character"/>
+		<property name="issueDate" column="ISSUE_DT" type="date"/>
+		<property name="transactionDate" column="TRN_DT" type="date"/>
+		<many-to-one name="customer" column="CUST_OID" lazy="false" not-null="true"/>
+		<property name="customerName" column="CUST_NM" type="string"/>
+		<property name="customerAddress" column="CUST_ADDR" type="string"/>
+		<property name="totalTransactionAmount" column="TOT_TRN_AMT" type="big_decimal"/>
+		<property name="totalDiscountAmount" column="TOT_DSCNT_AMT" type="big_decimal"/>
+		<property name="totalVatTransactionAmount" column="TOT_VAT_TRN_AMT" type="big_decimal"/>
+		<property name="netTransactionAmount" column="NET_TRN_AMT" type="big_decimal"/>
+		<property name="vatTransactionAmount" column="VAT_TRN_AMT" type="big_decimal"/>
+		<property name="netReturnedTransactionAmount" column="NET_RET_TRN_AMT" type="big_decimal"/>
+		<property name="printCount" column="PRNT_COUNT" type="integer"/>
+		<property name="salesTransactionType" column="SALES_TRN_TYP" type="character"/>
+		<property name="posId" column="POS_ID" type="string"/>
+		<property name="ticketNo" column="TICKET_NO" type="string"/>
+		<property name="posRegisterNo" column="REGISTER_NO" type="string"/>		
+		<property name="remark" column="REMARK" type="string"/>
+		<property name="createUserId" column="CREATE_USER_ID" type="string"/>
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>
+		<property name="returnQno" column="RETURN_QNO" type="string"/>		
+		<property name="isReturnReceive" column="IS_RETURN_RECEIVE" type="yes_no"/>
+		<property name="isReturnProduct" column="IS_RETURN_PRODUCT" type="yes_no"/>
+		<property name="redempType" column="REDEMP_TYPE" type="character"/>
+		
+		<property name="deliveryDate" column="DELIVERY_DT" type="date"/>
+		<property name="deliverySite" column="DELIVERY_SITE" type="string"/>
+		<property name="shippingPointId" column="SHIPPING_POINT_ID" type="string"/>
+		
+		<property name="isUseRefund" column="IS_USE_REFUND" type="yes_no"/>
+		<many-to-one name="reasonUseRefundId" column="REASON_USE_REFUND_ID" lazy="false" not-null="false"/>
+		<many-to-one name="useRefundStore" column="USE_REFUND_STORE" lazy="false" not-null="false"/>
+		<property name="useRefundPosId" column="USE_REFUND_POS_ID" type="string"/>
+		<property name="useRefundTicketNo" column="USE_REFUND_TICKET_NO" type="string"/>
+		<property name="useRefundTransactionDate" column="USE_REFUND_TRN_DT" type="date"/>
+		<property name="useRefundAmount" column="USE_REFUND_AMT" type="big_decimal"/>
+		
+		<property name="taxInvoiceId" column="TAX_INV_ID" type="string"/>
+		<property name="taxInvoiceIssueDate" column="TAX_INV_ISSUE_DT" type="date"/>
+		
+		<many-to-one name="billToCustomer" column="BILL_CUST_OID" lazy="false" not-null="false"/>
+		<property name="salesStoreId" column="SALES_STORE_ID" type="string"/>	
+		<bag name="refundItems" inverse="true" lazy="false" cascade="all" order-by="SEQ_NO asc">
+			<key column="REFUND_OID" not-null="true"/>
+			<one-to-many class="RefundItem"/>
+		</bag>
+		<bag name="refundTenders" inverse="true" lazy="false" cascade="all">
+			<key column="REFUND_OID" not-null="true"/>
+			<one-to-many class="RefundTender"/>
+		</bag>
+		<property name="isAdjustTendered" column="IS_ADJ_TENDER" type="yes_no"/>
+		<property name="refundTenderValue" column="TENDER_REFUND_AMT" type="big_decimal"/>
+		<property name="isQueueCancel" column="IS_QUEUE_CANCEL" type="yes_no"/>
+	</class>
+</hibernate-mapping>

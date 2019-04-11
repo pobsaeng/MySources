@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="PromotionSetArticle" table="PRMTN_SET_ARTC">
+		<id name="objectId" column="PRMTN_SET_ARTC_OID" type="long"/>
+		<many-to-one name="promotion" column="PRMTN_OID" lazy="false" not-null="true"/>
+		<many-to-one name="article" column="ARTC_ID" lazy="false" not-null="true"/>
+		<property name="mainUPC" column="MAIN_UPC" type="string"/>
+		<property name="quantityInSet" column="QTY_IN_SET" type="integer"/>
+		<property name="unit" column="UNIT" type="string"/>
+	</class>
+</hibernate-mapping>

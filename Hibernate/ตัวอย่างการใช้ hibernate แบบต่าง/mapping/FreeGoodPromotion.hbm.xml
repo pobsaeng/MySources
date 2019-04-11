@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.mch">
+	<class name="FreeGoodPromotion" table="FREE_GOOD_PRMTN">
+		<composite-id name="freeGoodPromotionId" class="FreeGoodPromotion$Id">
+			<key-property name="articleId" column="ARTC_ID" type="string"/>
+			<key-property name="startDate" column="START_DT" type="timestamp"/>
+		</composite-id>
+		<property name="endDate" column="END_DT" type="timestamp"/>		
+		<many-to-one name="mainArticle" column="ARTC_ID" lazy="false" not-null="true" insert="false" update="false"/>
+	</class>
+</hibernate-mapping>

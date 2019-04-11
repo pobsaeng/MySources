@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="PromotionSales" table="PRMTN_SALES">
+		<id name="objectId" column="PRMTN_SALES_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">PRMTN_SALES_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="promotionRedemption" column="PRMTN_RDPTN_OID" lazy="false" not-null="true"/>
+		<property name="promotionId" column="PRMTN_ID" type="string"/>
+		<property name="promotionName" column="PRMTN_NM" type="string"/>
+		<property name="salesType" column="SALES_TYP" type="character"/>
+		<property name="transactionReference" column="TRN_REF" type="string"/>
+		<property name="creditCardNo" column="CR_CARD_NUM" type="string"/>
+		<property name="netAmount" column="NET_AMT" type="big_decimal"/>
+		<property name="netTransactionAmount" column="NET_TRN_AMT" type="big_decimal"/>
+		<bag name="promotionSalesItems" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_SALES_OID" not-null="true"/>
+			<one-to-many class="PromotionSalesItem"/>
+		</bag>
+	</class>
+</hibernate-mapping>

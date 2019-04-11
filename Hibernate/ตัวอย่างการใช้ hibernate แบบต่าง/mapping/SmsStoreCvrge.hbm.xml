@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2013 6:16:28 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+    <class name="SmsStoreCvrge" table="SMS_STORE_CVRGE" >
+        <composite-id name="id" class="SmsStoreCvrgeId">
+            <key-property name="storeId" type="string">
+                <column name="STORE_ID"  />
+            </key-property>
+            <key-property name="smsPrmtnOid" type="long">
+                <column name="SMS_PRMTN_OID"  />
+            </key-property>
+        </composite-id>
+        <many-to-one name="smsPrmtn" class="SmsPrmtn" fetch="select" 
+            insert="false" update="false" lazy="false" not-null="true">
+            <column name="SMS_PRMTN_OID"  />
+        </many-to-one>
+        <property name="isActive" type="yes_no">
+            <column name="IS_ACTIVE"  />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.log">
+	<class name="MessageSalesTranLog" table="MSG_SALESTRAN_LOG">
+		<id name="objectId" column="MSG_SALESTRAN_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">MSG_SALESTRAN_LOG_SEQ</param>
+			</generator>
+		</id>
+		<property name="storeId" column="STORE_ID" type="string"/>
+		<property name="posId" column="POS_ID" type="string"/>
+		<property name="ticketNo" column="TICKET_NO" type="string"/>
+		<property name="trnDate" column="TRN_DATE" type="date"/>
+		<property name="createDate" column="CREATE_DATE" type="date"/>
+		<property name="salesTranType" column="SALESTRAN_TYPE" type="string"/>
+		<property name="msgType" column="MSG_TYPE" type="string"/>
+		<property name="exception1" column="EXCEPTION1" type="string"/>
+		<property name="exception2" column="EXCEPTION2" type="string"/>
+		<property name="exception3" column="EXCEPTION3" type="string"/>
+		<property name="exception4" column="EXCEPTION4" type="string"/>
+	</class>
+</hibernate-mapping>

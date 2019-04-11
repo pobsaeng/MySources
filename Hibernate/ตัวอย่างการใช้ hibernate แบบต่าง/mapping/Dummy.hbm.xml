@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="Dummy" table="DUMMY">
+		<id name="objectId" column="DUMMY_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">DUMMY_SEQ</param>
+			</generator>
+		</id>
+		<property name="dummyNo" column="DUMMY_NO" type="string"/>
+		<property name="dummyValue" column="DUMMY_VALUE" type="big_decimal"/>
+		<property name="dummyType" column="DUMMY_TYPE" type="string"/>
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+		<property name="createUserId" column="CREATE_USER_ID" type="string"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUserId" column="LAST_UPD_USER_ID" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

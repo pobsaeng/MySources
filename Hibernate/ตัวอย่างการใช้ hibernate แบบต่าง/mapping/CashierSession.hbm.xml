@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.cashier">
+	<class name="CashierSession" table="CSH_SESSION">
+		<id name="objectId" column="CSH_SESSION_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">CSH_SESSION_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="store" column="STORE_ID" lazy="false" not-null="true"/>
+		<property name="userId" column="USER_ID" type="string"/>
+		<property name="transactionDate" column="TRN_DT" type="date"/>
+		<property name="startDateTime" column="START_DTTM" type="timestamp"/>
+		<property name="endDateTime" column="END_DTTM" type="timestamp"/>
+		<property name="status" column="CSH_SESSION_STS" type="character"/>
+	</class>
+</hibernate-mapping>

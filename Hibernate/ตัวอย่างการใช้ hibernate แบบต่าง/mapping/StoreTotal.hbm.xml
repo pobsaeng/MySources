@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="StoreTotal" table="STORE_TOT">
+		<composite-id name="storeTotalId" class="StoreTotal$Id">
+			<key-property name="storeId" column="STORE_ID" type="string"/>
+			<key-property name="cashierTransactionTypeId" column="CSH_TRN_TYP_ID" type="string"/>
+		</composite-id>
+		
+		<many-to-one name="store" column="STORE_ID" lazy="false" insert="false" update="false" not-null="true"/>
+		<many-to-one name="cashierTransactionType" column="CSH_TRN_TYP_ID" lazy="false" insert="false" update="false" not-null="true"/>
+		<property name="transactionAmount" column="TRN_AMT" type="big_decimal"/>
+		<property name="closeStoreTransactionAmount" column="CLOSE_STORE_TRN_AMT" type="big_decimal"/>
+	</class>
+</hibernate-mapping>

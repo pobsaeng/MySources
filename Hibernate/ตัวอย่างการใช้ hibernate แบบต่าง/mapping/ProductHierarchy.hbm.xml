@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="ProductHierarchy" table="PROD_HIERARCHY">
+		<id name="objectId" column="PROD_HIER_OID" type="long"/>
+		<property name="name" column="PROD_HIER_NM" type="string"/>        
+		<property name="level" column="PROD_HIER_LV" type="integer"/>        
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="model.Cust_Addr">
+
+	<composite-id name="id" class="Cust_Addr_ID">
+        <key-property name="adcustid" class="model.Customer"/>
+        <key-property name="adaddrid" class="model.Address"/>
+     </composite-id>
+
+	<many-to-one name="customer" column="adcustid" class="model.Customer" />
+	<many-to-one name="address" column="adaddrid" class="model.Address" />
+
+	
+	
+	<property name="comment" type="string" column="chvCmt" />
+	
+</class>
+</hibernate-mapping>

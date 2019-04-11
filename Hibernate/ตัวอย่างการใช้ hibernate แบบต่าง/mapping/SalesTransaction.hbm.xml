@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.sale">
+	<class name="SalesTransaction" table="SALES_TRN">
+		<id name="objectId" column="SALES_TRN_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">SALES_TRN_SEQ</param>
+			</generator>
+		</id>
+		<property name="typeId" column="TYP_ID" type="character"/>
+		<property name="ticketNo" column="TICKET_NO" type="string"/>
+		<property name="posId" column="POS_ID" type="string"/>
+		<property name="posRegisterNo" column="REGISTER_NO" type="string"/>
+		<many-to-one name="store" column="STORE_ID" lazy="false" not-null="true"/>
+		<property name="transactionDate" column="TRN_DT" type="date"/>
+		<property name="startDate" column="START_DT" type="timestamp"/>
+		<property name="createDate" column="CREATE_DT" type="timestamp"/>
+		<property name="createUserId" column="CREATE_USER_ID" type="string"/>
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>
+		<many-to-one name="customer" column="CUST_OID" lazy="false" not-null="false"/>
+		<property name="discountCardNo" column="DSCNT_CARD_NO" type="string"/>
+		<many-to-one name="memberDiscountType" column="MBR_DSCNT_TYP_ID" lazy="false" not-null="false"/>
+		<property name="RewardCardNo" column="RWD_CARD_NO" type="string"/>
+		<many-to-one name="memberRewardType" column="MBR_RWD_TYP_ID" lazy="false" not-null="false"/>
+		<property name="referrerCardNo" column="REF_CARD_NO" type="string"/>
+		<many-to-one name="referrerRewardType" column="REF_RWD_TYP_ID" lazy="false" not-null="false"/>
+		<many-to-one name="referrerCustomer" column="REF_CUST_OID" lazy="false" not-null="false"/>
+		<property name="sapBillNo" column="SAP_BILL_NO" type="string"/>
+		<property name="totalTransactionAmount" column="TOT_TRN_AMT" type="big_decimal"/>
+		<property name="totalAfterDiffTransactionAmount" column="TOT_DIFF_TRN_AMT" type="big_decimal"/>
+		<property name="totalVatTransactionAmount" column="TOT_VAT_TRN_AMT" type="big_decimal"/>
+		<property name="totalDiscountAmount" column="TOT_DSCNT_AMT" type="big_decimal"/>
+		<property name="netTransactionAmount" column="NET_TRN_AMT" type="big_decimal"/>
+		<property name="vatTransactionAmount" column="VAT_TRN_AMT" type="big_decimal"/>
+		<property name="numOfItems" column="NUM_ITEMS" type="integer"/>
+		<many-to-one name="status" column="STS_ID" lazy="false" not-null="true"/>
+		<property name="transactionReference" column="TRN_REF" type="string"/>
+		<property name="suspendId" column="SUSPEND_ID" type="string"/>
+		<property name="suspendedDateTime" column="SUSPEND_DTTM" type="timestamp"/>
+		<many-to-one name="promotionRedemption" column="PRMTN_RDPTN_OID" lazy="false" not-null="false"/>
+		<property name="isTaxInvoice" column="IS_TAX" type="yes_no"/>
+		<property name="isCreditNote" column="IS_CN" type="yes_no"/>
+		<property name="taxInvoiceNo" column="TAX_INV_NO" type="string"/>
+		<many-to-one name="rewardCustomer" column="RWD_CUST_OID" lazy="false" not-null="false"/>
+		<property name="isReward" column="IS_RWD" type="yes_no"/>
+		<property name="updateUserId" column="UPDATE_USER_ID" type="string"/>
+		<property name="rewardPoint" column="CUR_RWD_PNT" type="big_decimal"/>
+		<property name="enCreditAmt" column="EN_CREDIT_AMT" type="big_decimal"/>
+		<property name="enUsedAmt" column="EN_USED_AMT" type="big_decimal"/>
+		<property name="refTranDate" column="ref_trn_dt" type="date"/>
+		<property name="refPosId" column="REF_POS_ID" type="string"/>
+		<property name="refTicketNo" column="REF_TICKET_NO" type="string"/>				
+		<property name="saleDocNo" column="SALES_DOC_NO" type="string"/>
+		<property name="salesChannel" column="SALES_CHANNEL" type="string"/>	
+		<property name="quotationId" column="QT_NO" type="string"/>
+		<property name="versionId" column="VERSION_ID" type="string"/>	
+		<property name="recordDate" column="RECORD_DTTM" type="timestamp"/>
+		<many-to-one name="posPromotionRedemption" column="POS_PRMTN_RDPTN_OID" lazy="false" not-null="false"/>
+		<property name="collSalesOrderNo" column="COLL_SALES_ORDER_NO" type="string"/>
+		<property name="discountCardNo2" column="DSCNT_CARD_NO2" type="string"/>	
+		<many-to-one name="memberDiscountType2" column="MBR_DSCNT_TYP_ID2" lazy="false" not-null="false"/>
+		<property name="custProcardNo" column="CUST_PRO_CARD_NO" type="string"/>
+		<property name="isManualRewardCard" column="IS_MANUAL_RWD_CARD" type="string" />
+		<property name="manualRewardCardDate" column="MANUAL_RWD_CARD_DT" type="date" />
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp" />
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string" />
+		<property name="distributionChannel" column="DISTRIBUTION_CHANNEL" type="string"/>
+		<property name="backStoreQNo" column="BACKSTORE_QNO" type="string"/>
+		
+		<bag name="transactionTotalDiscounts" inverse="true" lazy="true" cascade="all">
+			<key column="SALES_TRN_OID" not-null="true"/>
+			<one-to-many class="TransactionTotalDiscount"/>
+		</bag>
+		<bag name="salesTransactionItems" inverse="true" lazy="true" cascade="all" order-by="SEQ_NO asc">
+			<key column="SALES_TRN_OID" not-null="true"/>
+			<one-to-many class="SalesTransactionItem"/>
+		</bag>
+		<bag name="cashierTransactions" inverse="true" lazy="true" cascade="all">
+			<key column="SALES_TRN_OID" not-null="true"/>
+			<one-to-many class="com.ie.icon.domain.cashier.CashierTransaction"/>
+		</bag>
+		<bag name="salesTranPartnerParentItems" inverse="true" lazy="false" cascade="all">
+			<key column="PARENT_SALES_OID" not-null="true"/>
+			<one-to-many class="SalesTransactionPartner"/>
+		</bag>
+		<bag name="salesTranPartnerChieldItems" inverse="true" lazy="false" cascade="all">
+			<key column="SALES_TRAN_OID" not-null="true"/>
+			<one-to-many class="SalesTransactionPartner"/>
+		</bag>		
+		<bag name="salesOrderTransaction" inverse="true" lazy="true" cascade="all">
+			<key column="SALES_TRN_OID" not-null="true"/>
+			<one-to-many class="com.ie.icon.domain.so.SalesOrderTransaction"/>
+		</bag>		
+		
+		<!-- ...***Edit -->
+		<property name="isOnline" column="is_online" type="yes_no"/>
+	</class>
+</hibernate-mapping>

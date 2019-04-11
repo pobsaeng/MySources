@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.sale">
+	<class name="DiscountConditionType" table="DSCNT_COND_TYP">
+		<id name="discountConditionTypeId" column="DSCNT_COND_TYP_ID" type="string"/>
+		<property name="description" column="DSCNT_TYP_DSC" type="string"/>
+		<property name="discountType" column="DSCNT_TYP" type="integer"/>
+		<property name="isPercentDiscount" column="IS_PRCNT_DSCNT" type="yes_no"/>
+		<property name="isPromotionParticipation" column="IS_PRMTN_PARTICIPATION" type="yes_no"/>
+		<property name="isPos" column="IS_POS" type="yes_no"/>
+		<property name="isSo" column="IS_SO" type="yes_no"/>
+		<property name="messageValue" column="MSG_VAL" type="string"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

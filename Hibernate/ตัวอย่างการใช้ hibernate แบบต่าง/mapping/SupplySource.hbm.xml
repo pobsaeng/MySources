@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.mch">
+	<class name="SupplySource" table="SUPPLY_SRC">
+		<id name="supplySourceId" column="SUPPLY_SRC_ID" type="string" />
+		<property name="name" column="SUPPLY_SRC_NM" type="string" />
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/> 
+	</class>
+</hibernate-mapping>

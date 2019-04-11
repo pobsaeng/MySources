@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.cashier">
+	<class name="CashierAdjustType" table="CSH_ADJ_TYP">
+		<id name="cashierAdjTypId" column="CSH_ADJ_TYP_ID" type="string"/>
+		<property name="description" column="DESCRIPTION" type="string"/>
+		<property name="signAdj" column="SIGN_ADJ" type="integer"/>
+		<property name="isAccDebit" column="IS_ACC_DEBIT" type="yes_no"/>
+		<property name="cashierAccIdDebit" column="CSH_ACC_ID_DEBIT" type="string"/>
+		<property name="isAccCredit" column="IS_ACC_CREDIT" type="yes_no"/>
+		<property name="cashierAccIdCredit" column="CSH_ACC_ID_CREDIT" type="string"/>
+		<property name="isCostDebit" column="IS_COST_DEBIT" type="yes_no"/>
+		<property name="costCenterDebit" column="COST_CENTER_DEBIT" type="string"/>		
+		<property name="isCostCredit" column="IS_COST_CREDIT" type="yes_no"/>	
+		<property name="costCenterCredit" column="COST_CENTER_CREDIT" type="string"/>	
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+		<property name="isInterFaceSap" column="IS_INTERFACE_SAP" type="yes_no"/>					
+		<property name="isFixTender" column="IS_FIX_TENDER" type="yes_no"/>	
+		<property name="isReqUserId" column="IS_REQ_USER_ID" type="yes_no"/>			
+		<property name="isReqTicket" column="IS_REQ_TICKET" type="yes_no"/>			
+		<property name="lastUpdDttm" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="updateUserId" column="UPDATE_USER_ID" type="string"/>
+		<property name="lastPubDttm" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="refPubId" column="REF_PUB_ID" type="string"/>
+		<property name="isReqBu" column="IS_REQ_BU" type="yes_no"/>			
+		<bag name="cashierTransactionAdjustItem" inverse="true" lazy="false" cascade="delete">
+			<key column="CSH_ADJ_TYP_ID" not-null="true"/>
+			<one-to-many class="CashierTransactionAdjustItem"/>
+		</bag>		
+		<bag name="cashierAdjustCauseGroup" table="CSH_ADJ_TYP_CAUSE_GRP" inverse="false" lazy="true" fetch="select" cascade="delete">
+            <key column="CSH_ADJ_TYP_ID" not-null="true"/>
+            <many-to-many class="com.ie.icon.domain.cashier.CashierAdjustCauseGroup" column="CSH_ADJ_CAUSE_GRP_ID"/>
+        </bag>	
+	</class>
+</hibernate-mapping>

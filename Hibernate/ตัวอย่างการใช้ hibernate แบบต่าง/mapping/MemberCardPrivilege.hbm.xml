@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.customer">
+	<class name="MemberCardPrivilege" table="MBR_CARD_PRVLG">
+		<id name="objectId" column="MBR_CARD_PRVLG_OID" type="long"/>
+		<many-to-one name="memberCardType" column="MBR_CARD_TYP_ID" lazy="false" not-null="true"/>
+		<many-to-one name="memberDiscountType" column="MBR_DSCNT_TYP_ID" lazy="false" not-null="false"/>
+		<many-to-one name="memberRewardType" column="MBR_RWD_TYP_ID" lazy="false" not-null="false"/>
+		<many-to-one name="referrerRewardType" column="REF_RWD_TYP_ID" lazy="false" not-null="false"/>
+		<property name="startDate" column="START_DT" type="date"/>
+		<property name="endDate" column="END_DT" type="date"/>
+		<property name="createUser" column="CREATE_USER_NM" type="string"/>
+		<property name="createDate" column="CREATE_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+	</class>
+</hibernate-mapping>

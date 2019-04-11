@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.temp">
+	<class name="TmpShipToMap" table="TMP_SHIPTOMAP">
+		<id name="shipToNo" column="SHIPTONO" type="string"/> 
+		<property name="mapNo" column="MAPNO" type="string"/> 
+		<property name="createDateTime" column="CRDATE" type="timestamp"/>
+		<property name="lastUpdateDate" column="UPDDATE" type="timestamp"/>
+	</class>
+</hibernate-mapping>

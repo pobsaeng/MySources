@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2013 6:16:28 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+    <class name="SmsTrn" table="SMS_TRN" >
+        <id name="objectId" type="long">
+            <column name="SMS_TRN_OID"/>
+            <generator class="sequence">
+                <param name="sequence">SMS_TRN_SEQ</param>
+            </generator>
+        </id>
+        <property name="smsCode" type="string">
+            <column name="SMS_CODE" />
+        </property>
+        <property name="smsTrnRightNo" type="big_decimal">
+            <column name="SMS_TRN_RIGHT_NO"  />
+        </property>
+        <property name="vdCheckDt" type="date">
+            <column name="VD_CHECK_DT"  />
+        </property>
+        <property name="storeId" type="string">
+            <column name="STORE_ID"  />
+        </property>
+        <property name="smsPrmtnId" type="string">
+            <column name="SMS_PRMTN_ID"  />
+        </property>
+        <property name="ticketNo" type="string">
+            <column name="TICKET_NO"  />
+        </property>
+        <property name="posId" type="string">
+            <column name="POS_ID" />
+        </property>
+        <property name="trnDt" type="date">
+            <column name="TRN_DT"  />
+        </property>
+    </class>
+</hibernate-mapping>

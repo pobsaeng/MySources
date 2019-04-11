@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.cashier">
+	<class name="CashierRateTender" table="CSH_RATE_TENDER">
+		<id name="objectId" column="CSH_RATE_TENDER_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">CSH_RATE_TENDER_SEQ</param>
+			</generator>
+		</id>
+		<property name="tenderId" column="TENDER_ID" type="string"/>
+		<property name="rateFrom" column="RATE_FROM" type="date"/>
+		<property name="rateTo" column="RATE_TO" type="date"/>
+		<property name="rateType" column="RATE_TYP" type="string"/>
+		<property name="ratePayment" column="RATE_PAYMENT" type="string"/>
+		<property name="rate" column="RATE" type="big_decimal"/>
+		<property name="numMonth" column="NUM_MONTH" type="integer"/>
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>		
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>	
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>	
+		<property name="lastUpdateUser" column="UPDATE_USER_ID" type="string"/>
+		<property name="refPubId" column="REF_PUB_ID" type="string"/>
+		<property name="explanation" column="EXPLANATION" type="string"/>
+		<property name="isCustomer" column="IS_CUSTOMER" type="yes_no"/>	
+	</class>
+</hibernate-mapping>

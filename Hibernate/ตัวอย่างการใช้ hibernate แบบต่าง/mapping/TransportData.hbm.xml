@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.customer">
+	<class name="TransportData" table="TRANS_DATA">
+		<id name="objectId" column="TRANS_DATA_OID" type="long"/>
+		<property name="pointOfInterest" column="PNT_OF_INT"
+			type="string" />
+		<property name="parkingDistance" column="PARK_DIST"
+			type="string" />
+		<property name="parkingFee" column="PARK_FEE" type="string" />
+		<property name="parkingTime" column="PARK_TIME" type="string" />
+		<property name="contactPoint" column="CNTCT_PNT" type="string" />
+		<property name="isLiftAvailability" column="IS_LIFT_AVAIL"
+			type="yes_no" />
+		<property name="routeDetails" column="ROUTE_DET" type="string" />
+		<property name="receipient" column="RECEIPIENT" type="string" />
+		<property name="mapLatitude" column="MAP_LAT" type="string" />
+		<property name="mapLongtitude" column="MAP_LONG" type="string" />
+		<property name="telephone" column="TELEPHONE" type="string" />
+		<property name="mapLocation" column="MAP_LOC" type="string" />
+		<property name="mapName" column="MAP_NM" type="string" />
+		<property name="tmsLatitude" column="TMS_LAT" type="string" />
+		<property name="tmsLongtitude" column="TMS_LONG" type="string" />
+		<property name="plotMapLocation" column = "PLOT_MAP_LOC" type="string" />
+		<property name="plotMapName" column = "PLOT_MAP_NM" type="string" />
+	</class>
+</hibernate-mapping>

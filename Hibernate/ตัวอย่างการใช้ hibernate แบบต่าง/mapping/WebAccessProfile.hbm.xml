@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.authorization">
+	<class name="WebAccessProfile" table="WEB_ACCS_PRF">
+		<id name="objectId" column="WEB_ACCS_PRF_OID"/>
+		<property name="code" column="WEB_ACCS_PRF_CD" type="string"/>        
+		<property name="name" column="WEB_ACCS_PRF_NM" type="string"/>        
+		<property name="description" column="WEB_ACCS_PRF_DSC" type="string"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>        
+		<bag name="menuItems" inverse="true" lazy="true" cascade="all-delete-orphan">
+			<key column="WEB_ACCS_PRF_OID" not-null="true"/>
+			<one-to-many class="WebAccessProfileMenuItem"/>
+		</bag>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.cashier">
+	<class name="CashierTenderRef" table="CSH_TENDER_REF">
+		<id name="objectId" column="TENDER_REF_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">CSH_TENDER_REF_SEQ</param>
+			</generator>
+		</id>
+		<property name="dummyNo" column="DUMMY_NO" type="string"/>
+		<property name="dummyType" column="DUMMY_TYPE" type="string"/>
+		<many-to-one name="cashierTransaction" column="CSH_TRN_OID" lazy="false" not-null="true"/>
+		<property name="tranDate" column="TRN_DT" type="timestamp"/>
+		<property name="ticketNo" column="TICKET_NO" type="string"/>
+		<property name="storeId" column="STORE_ID" type="string"/>
+		<property name="posId" column="POS_ID" type="string"/>
+		<property name="status" column="STATUS" type="string"/>
+		<property name="confirmedDate" column="CONFIRMED_DATE" type="timestamp"/>
+		<property name="createUserId" column="CREATE_USER_ID" type="string"/>
+		<property name="createDttm" column="CREATE_DTTM" type="timestamp"/>
+		<property name="lastUpdUserId" column="LAST_UPD_USER_ID" type="string"/>
+		<property name="lastUpdDttm" column="LAST_UPD_DTTM" type="timestamp"/>
+		
+		<bag name="cashierTenderRefDetails" inverse="true" lazy="false" cascade="all">
+			<key column="TENDER_REF_OID" not-null="true"/>
+			<one-to-many class="CashierTenderRefDetail"/>
+		</bag>
+		 
+	</class>
+</hibernate-mapping>

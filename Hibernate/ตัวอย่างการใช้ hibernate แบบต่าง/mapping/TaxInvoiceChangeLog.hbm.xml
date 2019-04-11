@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.sale">
+	<class name="TaxInvoiceChangeLog" table="TAX_INV_CHG_LOG">
+		<id name="objectId" column="TAX_INV_CHG_LOG_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">TAX_INV_CHG_LOG_OID_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="taxInvoice" column="TAX_INV_OID" lazy="false" not-null="true"/>
+		<property name="changeDate" column="CHANGE_DT" type="date"/>
+		<property name="customerName" column="CUST_NM" type="string"/>
+		<property name="customerAddress" column="CUST_ADDR" type="string"/>
+		<property name="createUserId" column="CREATE_USER_ID" type="string"/>
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+	</class>
+</hibernate-mapping>

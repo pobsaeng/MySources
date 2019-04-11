@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="CashAdjustSequence" table="CSH_ADJ_SEQ">
+		<id name="objectId" column="CSH_ADJ_SEQ_ID" type="long"/>
+		<property name="seqTypId" column="SEQ_TYP_ID" type="string"/>
+		<property name="yearId" column="YEAR_VAL" type="string"/>
+		<property name="monthId" column="MONTH_VAL" type="string"/>
+		<property name="nextSeq" column="NEXT_VAL" type="integer"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+	</class>
+</hibernate-mapping>

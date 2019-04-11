@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.log">
+	<class name="LoadIdocLog" table="LOAD_IDOC_LOG">
+		<id name="objectId" column="LOAD_IDOC_LOG_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">LOAD_IDOC_LOG_SEQ</param>
+			</generator>
+		</id>
+		<property name="idocType" column="IDOC_TYPE" type="string"/>
+		<property name="reference1" column="REF_1" type="string"/>
+		<property name="reference2" column="REF_2" type="string"/>
+		<property name="reference3" column="REF_3" type="string"/>
+		<property name="loadDateTime" column="LOAD_DTTM" type="timestamp"/>
+		<property name="referenceInfo" column="REF_INFO" type="string"/>
+		<property name="loadStatus" column="LOAD_STS" type="character"/>
+	</class>
+</hibernate-mapping>

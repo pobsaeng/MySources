@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="HirePurchaseOfferingReject" table="HP_OFFRNG_REJECT">
+		<id name="objectId" column="HP_OFFRNG_REJ_OID" type="long">
+			<generator class="sequence">   
+				<param name="sequence">HP_OFFRNG_REJ_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="fileImport" column="FILE_IMPRT_OID" lazy="false" not-null="true"/>
+		<property name="hirePurchaseType" column="HP_TYP" type="character"/>
+		<property name="bank" column="BANK_ID" type="string"/>
+		<property name="card" column="CARD" type="string"/>
+		<property name="store" column="STORE_ID" type="string"/>
+		<property name="offeringReference" column="OFFRNG_REF" type="string"/>
+		<property name="effectiveDate" column="EFFECTIVE_DT" type="string"/>
+		<property name="endDate" column="END_DT" type="string"/>  
+		<property name="article" column="ARTC_ID" type="string"/>
+		<property name="interestPercent" column="INT_PRCNT" type="string"/>
+		<property name="termInMonth" column="TERM_IN_MONTH" type="string"/>
+		<property name="status" column="STATUS" type="character" />
+		<property name="articleSpec" column="ARTC_SPEC" type="string" />
+		<property name="errorMsg" column="ERR_MSG" type="string" />
+	</class>
+</hibernate-mapping>
+

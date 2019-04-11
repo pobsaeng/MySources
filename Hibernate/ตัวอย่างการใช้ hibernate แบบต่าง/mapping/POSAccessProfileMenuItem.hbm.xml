@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.authorization">
+	<class name="POSAccessProfileMenuItem" table="POS_ACCS_PRF_MENU_ITEM">
+		<id name="objectId" column="POS_ACCS_PRF_MENU_ITEM_OID"/>
+		<property name="name" column="MENU_ITEM_NM" type="string"/>        
+		<property name="type" column="MENU_ITEM_TYP" type="character"/>        
+		<many-to-one name="posAccessProfile" column="POS_ACCS_PRF_OID" lazy="false" not-null="true"/>
+		<many-to-one name="parentMenuItem" column="PARENT_MENU_ITEM_OID" lazy="false" cascade="none"/>
+		<many-to-one name="applicationFunction" column="POS_APP_FUNC_OID" lazy="false" not-null="false"/>
+		<property name="sequenceNo" column="SEQ_NO" type="float"/>
+		<bag name="childMenuItems" cascade="all-delete-orphan" inverse="true" lazy="false">
+			<key column="PARENT_MENU_ITEM_OID" not-null="true"/>
+			<one-to-many class="POSAccessProfileMenuItem"/>
+		</bag>
+	</class>
+</hibernate-mapping>

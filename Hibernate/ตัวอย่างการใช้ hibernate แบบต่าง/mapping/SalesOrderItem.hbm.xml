@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="SalesOrderItem" table="SALES_ORDER_ITEM">
+		<id name="objectId" column="SALES_ORDER_ITEM_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">SALES_ORDER_ITEM_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="salesOrder" column="SALES_ORDER_OID" lazy="false" not-null="true"/>
+		<many-to-one name="salesOrderGroup" column="SALES_ORDER_GRP_OID" lazy="false" not-null="false"/>
+		<property name="seqNo" column="SEQ_NO" type="integer"/>
+		<property name="mainUPC" column="MAIN_UPC" type="string"/>
+		<property name="parentGenericArticleNo" column="PARENT_GEN_ARTC_ID" type="string"/>
+		<property name="articleNo" column="ARTC_NO" type="string"/>
+		<property name="mc9" column="MC9" type="string"/>   
+		<many-to-one name="taxCode" column="TAX_CODE_ID" lazy="false" not-null="true"/>
+		<property name="description" column="SALES_ORDER_ITEM_DSC" type="string"/>
+		<property name="quantity" column="QTY" type="big_decimal"/>
+		<property name="isMainProduct" column="IS_MAIN_PRD" type="yes_no"/>		
+		<property name="isReserveDC" column="IS_RESERVE_DC" type="yes_no"/>
+		<property name="unit" column="UNIT" type="string"/>
+		<property name="unitPrice" column="UNIT_PRICE" type="big_decimal"/>		
+		<property name="netItemAmount" column="NET_ITEM_AMT" type="big_decimal"/>
+		<property name="batch" column="BATCH" type="string"/>
+		<property name="salesPersonId" column="SALES_PERSON_ID" type="string"/>
+		<property name="salesPersonName" column="SALES_PERSON_NM" type="string"/>
+		<property name="remark" column="REMARK" type="string"/>		
+		<property name="isDownPayment" column="IS_DOWN_PYMT" type="yes_no"/>
+		<property name="downPaymentDateTime" column="DOWN_PYMT_DTTM" type="timestamp"/>
+		<property name="rejectReasonId" column="REJ_REASON_ID" type="string"/>
+		<property name="supplySourceId" column="SUP_SRC_ID" type="string"/>
+		<property name="blockCodeId" column="BLOCK_CODE_ID" type="string"/>
+		<property name="isBlockPurchase" column="IS_BLOCK_PURCHASE" type="yes_no"/>
+		<property name="isPriceRequired" column="IS_PRICE_REQ" type="yes_no"/>
+		<property name="priceConditionTypeId" column="PRICE_COND_TYP_ID" type="string"/>
+		<property name="purchaseValidFrom" column="PURCHASE_VALID_FROM" type="date"/>
+		<property name="isDelete" column="IS_DELETE" type="yes_no"/>
+		<property name="isSpecialOrder" column="IS_SPECIAL_ORDER" type="yes_no" />
+		<property name="isSpecialDts" column="IS_SPECIAL_DTS" type="yes_no" />
+		<property name="isContainer" column="IS_CONTAINER" type="yes_no"/>
+		<property name="sapSeqNo" column="SAP_SEQ_NO" type="string"/>
+		<property name="incentive" column="INCENTIVE" type="string"/>
+		<property name="incentiveNM" column="INCENTIVE_NM" type="string"/>
+		
+		
+		
+		
+		<bag name="salesOrderSetItems" inverse="true" lazy="true" cascade="all">
+			<key column="SALES_ORDER_ITEM_OID" not-null="false"/>
+			<one-to-many class="SalesOrderSetItem"/>
+		</bag>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.mch">
+	<class name="ArticleRateCharge" table="ARTC_RATE_CHARGE">
+		<id name="objectId" column="ARTC_RATE_CHARGE_OID" type="long"/>			
+		<property name="productHierarchyId" column="PROD_HIER_OID" type="integer"/>        
+		<property name="hierarchyId" column="HIER_ID" type="string"/>   
+		<property name="hierarchyDescription" column="HIER_DSC" type="string"/> 
+		<property name="isCalRateCharge" column="IS_CAL_RATE_CHARGE" type="string"/> 
+		<property name="startDate" column="START_DT" type="date"/> 
+		<property name="endDate" column="END_DT" type="date"/> 
+		<property name="isActive" column="IS_ACTIVE" type="string"/> 
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/> 
+		<property name="createDateTimeStamp" column="CREATE_DTTM" type="timestamp"/> 
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/> 
+		<property name="lastUpdateDateTimeStamp" column="LAST_UPD_DTTM" type="timestamp"/> 
+		<property name="lastPublishDateTimeStamp" column="LAST_PUB_DTTM" type="timestamp"/> 
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>      
+	</class>
+</hibernate-mapping>

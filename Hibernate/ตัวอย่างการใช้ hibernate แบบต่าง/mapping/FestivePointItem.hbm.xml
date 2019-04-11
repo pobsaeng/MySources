@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="FestivePointItem" table="FESTIVE_POINT_ITEM">
+		<id name="objectId" column="FESTIVE_POINT_ITEM_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">FESTIVE_POINT_ITEM_SEQ</param>
+			</generator>
+		</id>
+		
+		<many-to-one name="festivePoint" column="FESTIVE_POINT_OID" lazy="false" not-null="true"/>
+		<property name="seqNo" column="SEQ_NO" type="integer"/>
+		<property name="couponNo" column="COUPON_NO" type="string"/>
+		<property name="point" column="POINT" type="big_decimal"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.customer">
+	<class name="CustomerPartner" table="CUST_PARTNER">
+		<composite-id name="customerPartnerId" class="CustomerPartner$Id">
+			<key-property name="customerOid" column="CUST_OID" type="long"/>
+			<key-property name="functionTypeId" column="PARTNER_FUNC_TYP_ID" type="string"/>
+			<key-property name="customerPartnerOid" column="PARTNER_CUST_OID" type="long"/>
+		</composite-id>	
+    	<many-to-one name="customer" column="CUST_OID" insert="false" lazy="false" update="false" not-null="false"/>
+    	<many-to-one name="partnerType" column="PARTNER_FUNC_TYP_ID" lazy="false" insert="false" update="false" not-null="false"/>
+    	<many-to-one name="partnerCustomer" column="PARTNER_CUST_OID" lazy="false" insert="false" update="false" not-null="false"/>
+    	<property name="isDefault" column="IS_DEFAULT" type="yes_no"/>
+	</class>
+</hibernate-mapping>

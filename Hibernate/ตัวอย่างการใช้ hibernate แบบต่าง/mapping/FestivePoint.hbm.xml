@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="FestivePoint" table="FESTIVE_POINT">
+		<id name="objectId" column="FESTIVE_POINT_OID" type="long">
+			<generator class="sequence">  
+				<param name="sequence">FESTIVE_POINT_SEQ</param>
+			</generator>
+		</id>
+		<property name="transactionDate" column="TRN_DT" type="date"/>
+		<property name="promotionRedemptionId" column="PRMTN_RDPTN_ID" type="string"/>
+		<property name="redemptionDate" column="RDPTN_DT" type="date"/>
+		<many-to-one name="store" column="STORE_ID" lazy="false" not-null="true"/>
+		<property name="cardNo" column="CARD_NO" type="string"/>
+		<property name="promotionId" column="PRMTN_ID" type="string"/>
+		<property name="couponAmount" column="COUPON_AMT" type="big_decimal"/>
+		<property name="remark" column="REMARK" type="string" />
+		<property name="transNo" column="TRANS_NO" type="string"/>
+		<property name="couponQty" column="COUPON_QTY" type="integer"/>
+		<property name="receiveQty" column="RECEIVE_QTY" type="integer"/>
+		
+		<property name="createDate" column="CREATE_DTTM" type="timestamp"/>
+		<property name="createBy" column="CREATE_BY" type="string"/>
+		<bag name="festivePointItems" inverse="true" lazy="true" cascade="all" order-by="SEQ_NO">
+			<key column="FESTIVE_POINT_OID" not-null="true"/>
+			<one-to-many class="FestivePointItem"/>
+		</bag>
+	</class>
+</hibernate-mapping>

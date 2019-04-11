@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="SalesOrderTransaction" table="SALES_ORDER_TRN">
+		<composite-id name="salesOrderTransactionId" class="SalesOrderTransaction$Id">
+			<key-property name="salesTransactionOid" column="SALES_TRN_OID" type="long"/>
+			<key-property name="storeId" column="STORE_ID" type="string"/>
+			<key-property name="transactionDate" column="TRN_DT" type="date"/>
+			<key-property name="salesOrderNo" column="SALES_ORDER_NO" type="string"/>
+		</composite-id>
+		<many-to-one name="salesTransaction" column="SALES_TRN_OID" lazy="false" insert="false" update="false" not-null="true"/>
+		<many-to-one name="store" column="STORE_ID"  lazy="false" insert="false" update="false" not-null="true"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="ProductConditionType" table="PROD_COND_TYP">
+		<id name="objectId" column="PROD_COND_TYP_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">PROD_COND_TYP_SEQ</param>
+			</generator>
+		</id>
+		<property name="name" column="PROD_COND_TYP_NM" type="string"/>        
+	</class>
+</hibernate-mapping>

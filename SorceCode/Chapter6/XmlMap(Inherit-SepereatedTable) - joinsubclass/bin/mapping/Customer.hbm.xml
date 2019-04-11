@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="model.Customer" table="Customer">
+  <id column="id" name="id">
+   <generator class="identity"/>
+  </id>
+  
+   <property column="chvFirNam" generated="never" lazy="false"
+   length="50" name="firstname" not-null="true"/>
+  <property column="chvSurNam" generated="never" lazy="false"
+   length="50" name="surname" not-null="true"/>
+  <property column="intAge" generated="never" lazy="false" name="age" type="integer"/>
+  
+ 	<joined-subclass name="model.CustomerVIP" table="CustomerVIP" >
+	<key column="id"/>
+	<property name="frequency" length="10" column = "chvFreq" 
+			not-null = "false" />
+	</joined-subclass>
+
+	
+ </class>
+</hibernate-mapping>

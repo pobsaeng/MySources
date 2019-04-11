@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.customer">
+	<class name="MemberDiscountType" table="MBR_DSCNT_TYP">
+		<id name="memberDiscountTypeId" column="MBR_DSCNT_TYP_ID" type="string"/>
+		<property name="name" column="MBR_DSCNT_TYP_NM" type="string"/>        
+		<property name="status" column="MBR_DSCNT_TYP_STS" type="character"/>
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="lastModifyUser" column="LAST_MODIFY_USER" type="string"/>
+		<property name="lastModifyDateTime" column="LAST_MODIFY_DTTM" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<bag name="memberDiscountPrivileges" inverse="true" lazy="false" cascade="all-delete-orphan" order-by="PROD_HIER_OID desc, HIER_ID asc">
+			<key column="MBR_DSCNT_TYP_ID" not-null="true"/>
+			<one-to-many class="MemberDiscountPrivilege"/>
+		</bag>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.cashier">
+	<class name="CashierTransactionAdjustExclude" table="CSH_TRN_ADJ_EX">
+		<id name="objectId" column="CSH_TRN_ADJ_EX_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">CSH_TRN_ADJ_EX_SEQ</param>
+			</generator>
+		</id>
+		<property name="transactionDate" column="TRN_DT" type="date"/>
+		<property name="storeId" column="STORE_ID" type="string"/>
+		<property name="cshTrnTypeId" column="CSH_TRN_TYP_ID" type="string"/>
+		<property name="tenderId" column="TENDER_ID" type="string"/>
+		<property name="transactionAmount" column="TRN_AMT" type="big_decimal"/>		
+		<property name="adjustAmount" column="ADJ_AMT" type="big_decimal"/>
+		<property name="lastUpdDttm" column="LAST_UPD_DTTM" type="timestamp"/>			
+		<property name="updateUserId" column="UPDATE_USER_ID" type="string"/>	
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+		
+	</class>
+</hibernate-mapping>

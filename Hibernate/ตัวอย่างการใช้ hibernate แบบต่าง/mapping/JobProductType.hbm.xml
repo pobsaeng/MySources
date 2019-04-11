@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="JobProductType" table="M_DS_JOBPRD">
+		<composite-id name="jobProductTypeId" class="JobProductType$Id">
+			<key-property name="shippingPointId" column="SHIPPNT" type="string"/>
+			<key-property name="jobTypeId" column="JOBTYPE" type="string"/>
+			<key-property name="mainProductTypeId" column="PRDTYPE" type="string"/>
+			<key-property name="data1" column="DATA1" type="string"/>
+		</composite-id>
+		<many-to-one name="shippingPoint" column="SHIPPNT" lazy="false" insert="false" update="false" not-null="true"/> 
+		<many-to-one name="jobType" column="JOBTYPE" lazy="false" insert="false" update="false" not-null="true"/> 
+		<many-to-one name="mainProductType" column="PRDTYPE" lazy="false" insert="false" update="false" not-null="true"/> 
+		<property name="status" column="STATUS" type="character"/>
+		<property name="createDateTime" column="CRDATE" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<property name="pattern" column="PAT" type="string"/>
+		<property name="workInfo" column="WORKINFO" type="string"/>
+	</class>
+</hibernate-mapping>

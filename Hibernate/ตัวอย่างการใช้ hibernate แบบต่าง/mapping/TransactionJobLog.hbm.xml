@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.log">
+	<class name="TransactionJobLog" table="TRN_JOB_LOG">
+		<composite-id name="TransactionJobLogId" class="TransactionJobLog$Id">
+			<key-property name="transactionDateId" column="TRN_DT" type="date"/>
+			<key-property name="jobNameId" column="JOB_NM" type="string"/>
+		</composite-id>
+		<property name="mainProcessEndDate" column="MAIN_END_DTTM" type="timestamp"/>
+		<property name="memberProcessEndDate" column="MBR_END_DTTM" type="timestamp"/>
+		<property name="processEndDate" column="END_DTTM" type="timestamp"/>		
+	</class>
+</hibernate-mapping>

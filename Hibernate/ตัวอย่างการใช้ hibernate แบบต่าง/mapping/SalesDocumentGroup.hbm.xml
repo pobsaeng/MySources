@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.sale">
+	<class name="SalesDocumentGroup" table="SALES_DOC_GRP">
+		<id name="objectId" column="SALES_DOC_GRP_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">SALES_DOC_GRP_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="salesDocOId" column="SALES_DOC_OID" lazy="false" not-null="true"/>
+		<property name="groupNo" column="GRP_NO" type="integer"/>
+		<property name="shipPointID" column="SHIPPING_POINT_ID" type="string"/>
+		<property name="sapDoNo" column="SAP_DO_NO" type="string"/>
+		<many-to-one name="shipToCustId" column="SHIP_TO_CUST_OID" lazy="false" not-null="false"/>
+		<many-to-one name="jobType" column="JOBTYPE" lazy="false" not-null="false"/>
+		<many-to-one name="mainProductType" column="PRDTYPE" lazy="false" not-null="false"/>
+		<many-to-one name="timeFrame" column="TFNO" lazy="false" not-null="false"/>
+		<many-to-one name="province" column="PVNO" lazy="false" not-null="false"/>
+		<many-to-one name="district" column="DTNO" lazy="false" not-null="false"/>
+		<property name="deliveryQuqeNo" column="DELIVERY_QNO" type="string"/>		
+		<property name="deliveryTime" column="DELIVERY_DT" type="date"/>
+		<property name="isOtherStoreDelivery" column="IS_OTH_STORE_DELIVERY" type="yes_no"/>		
+		<many-to-one name="deliveryStore" column="DELIVERY_STORE_ID" lazy="false" not-null="false"/>		
+		<many-to-one name="vendor" column="VDNO" lazy="false" not-null="false"/>		
+		<property name="remark" column="REMARK" type="string"/>
+		<property name="confirmType" column="CONF_TYP_NO" type="string"/>
+		<property name="confirmDetail" column="CONF_TYP_DESC" type="string"/>
+		
+		<property name="installQueueNo" column="INST_QNO" type="string" />
+		<property name="installDate" column="INST_DT" type="date"/>
+		<property name="installShippingPointNo" column="INST_SHIPPNT_ID" type="string" />
+		<many-to-one name="jobTypeIns" column="INST_JOBTYPE" lazy="false" not-null="false"/>
+		<property name="installTimeFrame" column="INST_TFNO" type="string" />
+		<many-to-one name="installProvince" column="INST_PVNO" lazy="false" not-null="false"/>
+		<many-to-one name="installDistrict" column="INST_DTNO" lazy="false" not-null="false"/>	
+		<property name="installSAPDONO" column="INST_SAP_DO_NO" type="string" />
+		<property name="installRemark" column="INST_REMARK" type="string" />
+		<property name="mainQuantity" column="MAIN_QTY" type="big_decimal"/>
+		<property name="installMainQuantity" column="INST_MAIN_QTY" type="big_decimal"/>
+		<property name="isDTSPECIFY" column="IS_DT_SPECIFY" type="yes_no"/>
+		<property name="isInstallDTSPECIFY" column="IS_INST_DT_SPECIFY" type="yes_no"/>
+		<many-to-one name="mainProductTypeIns" column="INST_PRDTYPE" lazy="false" not-null="false"/>
+				
+		<property name="timeType" column="TIME_TYPE" type="string"/>
+		<property name="timeTypeIns" column="INST_TYPE" type="string"/>
+		<property name="timeNo" column="TIME_NO" type="string"/>
+		<property name="timeNoIns" column="INST_TIME_NO" type="string"/>
+		<property name="specWork" column="SPEC_WORK" type="string"/>
+		<property name="specWorkIns" column="INST_SPEC_WORK" type="string"/>	
+		<property name="jobNo" column="JOB_NO" type="string"/>
+		<property name="jobNoIns" column="INST_JOB_NO" type="string"/>
+		<property name="isReceiveBack" column="IS_RECEIVE_BACK" type="string"/>
+		
+		<bag name="salesDocumenttItems" inverse="true" lazy="true" cascade="none">
+			<key column="SALES_DOC_GRP_OID" not-null="true"/>
+			<one-to-many class="SalesDocumentItem"/>
+		</bag>
+		
+		<property name="deliverySite" column="delivery_site" type="string"/>
+		<property name="instDeliverySite" column="inst_delivery_site" type="string"/>
+	</class>
+</hibernate-mapping>

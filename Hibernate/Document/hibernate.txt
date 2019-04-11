@@ -1,0 +1,43 @@
+hibernate จะดีในส่วนของ Programmer แต่ข้อเสียตรง Performance
+-hibernate เป็น API 
+-entity คลาสเพื่อ Map ตัว db
+-สร้างไฟล์ Resource ใว้เก็บ connection 
+-การใช้ static ถ้าประกาศมากไปจะกิน Memory เพราะการประกาศ static จะเก็บใว้ที่ Memory(การใช้ static ต้องใส่ final ที่ตัวแปรใว้ด้วย)
+-การสร้างคสาสหรือสร้าง bean ควรใส่ serialVersionUID เอาใว้
+
+การ Query ของ Hibernate 
+-HQL:SQL ไม่ต้องแก้คำสั่งเมื่อเปลี่ยน database เจ้าอื่น 
+เช่น  Query q = session.createQuery("SELECT t FROM TbUser t");
+
+-Native Query:SQL
+เช่น  Query q = session.createSQLQuery("SELECT * FROM tb_user").addEntity(TbUser.class);
+
+-Criteria:
+-Name Query:
+
+
+Hibernate เหมาะกับการ insert,update,delete 
+ไม่เหมาะกับการ ดึงขึ้นมาแสดง(search) การดึงควรจะทำอีกวิธีอื่น
+
+-sess.merge(tbUser); ถ้า id ที่ส่งไปไม่มีจะทำการ Insert ให้ ถ้ามีจะ Update
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+คำถาม:

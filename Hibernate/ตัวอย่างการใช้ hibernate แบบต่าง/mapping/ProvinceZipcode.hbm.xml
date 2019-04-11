@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="ProvinceZipcode" table="MST_PROVDIST">
+		<composite-id name="provinceZipcodeId" class="ProvinceZipcode$Id">
+			<key-property name="provinceOid" column="PROVINCE_OID" type="string"/>
+			<key-property name="districtId" column="DISTRICT_ID" type="string"/>
+			<key-property name="zipcode" column="ZIPCODE" type="string"/>
+		</composite-id>
+		<many-to-one name="province" column="PROVINCE_OID" lazy="false" insert="false" update="false" not-null="true"/>
+		<many-to-one name="district" column="DISTRICT_ID" lazy="false" insert="false" update="false" not-null="true"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

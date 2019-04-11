@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.mch">
+	<class name="ArticleDimensionTMP" table="TMP_ARTC_DIMENSION">
+		<id name="objectId" column="DIM_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">ARTC_DIMENSION_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="article" column="ARTC_ID" lazy="false" not-null="true"/>      
+		<property name="oum" column="OUM" type="string"/>        
+		<property name="articleDimension" column="ART_DIMENSION" type="big_decimal"/>        
+		<property name="dimensionOum" column="DIM_OUM" type="string"/>        
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="refIDocNo" column="REF_IDOC_NO" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

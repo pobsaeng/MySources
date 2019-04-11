@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.customer">
+	<class name="Customer" table="CUSTOMER">
+		<id name="objectId" column="CUST_OID" type="long"/>
+		<property name="sapId" column="SAP_ID" type="string"/>        
+		<many-to-one name="title" column="TITLE_ID" lazy="false" not-null="false"/>       
+		<property name="firstName" column="FIRST_NM" type="string"/>
+		<property name="lastName" column="LAST_NM" type="string"/>
+		<property name="vatClassification" column="VAT" type="yes_no"/>
+		<property name="customerGroup" column="CUST_GRP_ID" type="string"/>
+		<many-to-one name="partnerType" column="PARTNER_FUNC_TYP_ID" lazy="false" not-null="false"/>
+		<property name="village" column="VILLAGE" type="string"/>        
+		<many-to-one name="residentCode" column="REST_CODE_ID" lazy="false" not-null="false"/>        
+		<property name="floor" column="FLOOR_NUM" type="string"/>        
+		<property name="unit" column="UNIT" type="string"/>        
+		<property name="number" column="NUMBER_ADDR" type="string"/>        
+		<property name="moo" column="MOO" type="string"/>        
+		<property name="soi" column="SOI" type="string"/>        
+		<property name="street" column="STREET" type="string"/>        
+		<property name="subDistrict" column="SUB_DISTRICT" type="string"/>        
+		<property name="district" column="DISTRICT" type="string"/>        
+		<property name="province" column="PROVINCE" type="string"/>
+		<property name="zipCode" column="ZIPCODE" type="string"/>        
+		<property name="phoneNumber1" column="PHONE_NO_1" type="string"/>        
+		<property name="phoneNumber2" column="PHONE_NO_2" type="string"/>        
+		<property name="phoneNumber3" column="PHONE_NO_3" type="string"/>        
+		<property name="phoneNumber4" column="PHONE_NO_4" type="string"/>        
+		<property name="extension1" column="EXT_1" type="string"/>        
+		<property name="extension2" column="EXT_2" type="string"/>        
+		<property name="extension3" column="EXT_3" type="string"/>        
+		<property name="extension4" column="EXT_4" type="string"/>        
+		<property name="defaultPhoneNo" column="DEFAULT_PHONE_NO" type="string"/>        
+		<property name="fax" column="FAX" type="string"/>        
+		<property name="email" column="EMAIL" type="string"/>        
+		<many-to-one name="country" column="COUNTRY_ID" lazy="false" not-null="false"/>        
+		<property name="language" column="LANGUAGE" type="string"/>        
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+		<property name="searchTerm2" column="SEARCH_TERM2" type="string"/>
+		<property name="accountMemo" column="ACC_MEMO" type="string"/>
+		<property name="invAddr" column="INV_ADDR" type="string"/>
+		<property name="accGrp" column="ACC_GRP" type="string"/>
+		<property name="branchType" column="BRANCHTYPE" type="string"/>
+		<property name="branchId" column="BRANCHID" type="string"/>
+		<property name="branchDescr" column="BRANCHDESCR" type="string"/>
+		<property name="taxId" column="TAXID" type="string"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="refIDocNo" column="REF_IDOC_NO" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<many-to-one name="transportData" column="TRANS_DATA_OID" lazy="false" unique="true" cascade="all"/>
+		<bag name="customerPartners" inverse="true" lazy="false" cascade="all-delete-orphan">
+			<key column="CUST_OID" not-null="true"/>
+			<one-to-many class="CustomerPartner"/>
+		</bag>
+	</class>
+</hibernate-mapping>

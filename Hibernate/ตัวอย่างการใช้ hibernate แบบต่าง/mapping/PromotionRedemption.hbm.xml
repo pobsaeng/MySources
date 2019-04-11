@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="PromotionRedemption" table="PRMTN_RDPTN">
+		<id name="objectId" column="PRMTN_RDPTN_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">PRMTN_RDPTN_SEQ</param>
+			</generator>
+		</id>
+		<property name="promotionRedemptionId" column="PRMTN_RDPTN_ID" type="string"/>
+		<property name="redemptionType" column="RDPTN_TYP" type="character"/>
+		<many-to-one name="store" column="STORE_ID" lazy="false" not-null="true"/>
+		<many-to-one name="customer" column="CUST_OID" lazy="false" not-null="false"/>
+		<property name="customerFirstName" column="CUST_FIRST_NM" type="string"/>
+		<property name="customerLastName" column="CUST_LAST_NM" type="string"/>
+		<property name="customerContact" column="CUST_CONTACT" type="string"/>
+		<property name="referenceDocumentNo" column="REF_DOC_NO" type="string"/>
+		<property name="redemptionDate" column="RDPTN_DT" type="date"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="createUserId" column="CREATE_USER_ID" type="string"/>
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>
+		<property name="remark" column="REMARK" type="string"/>
+		<property name="isRedemptionComplete" column="IS_RDPTN_COMPLETE" type="yes_no"/>
+		<property name="printCount" column="PRNT_CNT" type="integer"/>
+		<property name="status" column="STS_ID" type="character"/>
+		<property name="referenceTransactionDate" column="REF_TRN_DT" type="date" />
+		
+		<bag name="promotionPremiumRedemptions" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_RDPTN_OID" not-null="true"/>
+			<one-to-many class="PromotionPremiumRedemption"/>
+		</bag>
+<!-- 	
+		<bag name="soARBillings" inverse="true" lazy="true" cascade="none">
+			<key column="PRMTN_RDPTN_OID" not-null="true"/>
+			<one-to-many class="com.ie.icon.domain.so.SOARBilling"/>
+		</bag>
+ -->
+		<bag name="salesTransactions" inverse="true" lazy="true" cascade="none">
+			<key column="PRMTN_RDPTN_OID" not-null="true"/>
+			<one-to-many class="com.ie.icon.domain.sale.SalesTransaction"/>
+		</bag>
+		<bag name="promotionSales" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_RDPTN_OID" not-null="true"/>
+			<one-to-many class="PromotionSales"/>
+		</bag>
+		<bag name="promotionDiscountRedemptions" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_RDPTN_OID" not-null="true"/>
+			<one-to-many class="PromotionDiscountRedemption"/>
+		</bag>
+		<bag name="promotionNoReceiveRedemptions" inverse="true" lazy="true" cascade="all">
+			<key column="PRMTN_RDPTN_OID" not-null="true"/>
+			<one-to-many class="PromotionNoReceiveRedemption"/>
+		</bag>		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="PromotionArticleOption" table="PRMTN_ARTC_OPTN">
+		<id name="objectId" column="TIER_OPTN_OID" type="long"/>
+		<property name="optionNumber" column="OPTN_NUM" type="integer"/>
+		<many-to-one name="promotionArticleTier" column="TIER_OID" lazy="false" not-null="true"/>
+		<bag name="items" inverse="true" lazy="false" cascade="all">
+			<key column="TIER_OPTN_OID"/>
+			<one-to-many class="PromotionArticleOptionItem"/>
+		</bag>
+	</class>
+</hibernate-mapping>

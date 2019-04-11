@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="UserIncentive" table="USER_INCENTIVE">
+	    <id name="objectId" column="USER_INCENTIVE_OID" type="long"></id> 
+		<property name="userIncentiveId" column="USER_INCENTIVE_ID" type="string"/>
+		<property name="firstNm" column="FIRST_NM" type="string"/>
+		<property name="lastNm" column="LAST_NM" type="string"/>
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+		<property name="storeId" column="STORE_ID" type="string"/>
+		<property name="createDttm" column="CREATE_DTTM" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPubDttm" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="refPubId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>
+
+
+

@@ -1,0 +1,215 @@
+package com.ie.icon.dao.hibernate;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.dao.DataAccessException;
+
+import com.ie.icon.constant.MessageLogConstant;
+import com.ie.icon.dao.MessageLogDao;
+import com.ie.icon.domain.log.ErrorMessageLog;
+import com.ie.icon.domain.log.MessageLog;
+import com.ie.icon.domain.log.WSLog;
+import com.ie.icon.domain.mch.ArticleCategory;
+
+
+public class HibernateMessageLogDao extends HibernateCommonDao implements
+        MessageLogDao {
+
+    /* (non-Javadoc)
+     * @see com.ie.icon.dao.MessageLogDao#create(com.ie.icon.domain.log.MessageLog)
+     */
+    public void create(MessageLog log) throws DataAccessException {
+        getHibernateTemplate().save(log);
+    }
+
+    /* (non-Javadoc)
+     * @see com.ie.icon.dao.MessageLogDao#delete(com.ie.icon.domain.log.MessageLog)
+     */
+    public void delete(MessageLog log) throws DataAccessException {
+        getHibernateTemplate().delete(log);
+    }
+
+    /* (non-Javadoc)
+     * @see com.ie.icon.dao.MessageLogDao#update(com.ie.icon.domain.log.MessageLog)
+     */
+    public void update(MessageLog log) throws DataAccessException {
+        getHibernateTemplate().update(log);
+    }
+    
+    public List getMessageLogByTrnDt(Date trnDate) throws DataAccessException {
+    	Date start = null;
+    	Date end = null;
+    	Calendar c = Calendar.getInstance();
+    	
+    	c.setTime(trnDate);
+    	c.set(Calendar.HOUR, 0);
+    	c.set(Calendar.MINUTE, 0);
+    	c.set(Calendar.SECOND, 0);
+    	c.set(Calendar.AM_PM, Calendar.AM);
+    	start = c.getTime();
+    	
+    	c.set(Calendar.HOUR, 11);
+    	c.set(Calendar.MINUTE, 59);
+    	c.set(Calendar.SECOND, 59);
+    	c.set(Calendar.AM_PM, Calendar.PM);
+    	end = c.getTime();
+    	
+    	String queryString = "select log.storeId, log.messageType, count(*) from " +
+    			"MessageLog log where " +
+    			"log.messageDateTime > :start and log.messageDateTime < :end " +
+    			"group by log.storeId, log.messageType";
+    	return getHibernateTemplate().findByNamedParam(queryString, new String[] {"start", "end"}, new Object[] {start, end});
+    }
+    
+    public List getMessageLogByMessageType(String messageType, String storeId, Date trnDate) throws DataAccessException {
+    	Date start = null;
+    	Date end = null;
+    	Calendar c = Calendar.getInstance();
+    	
+    	c.setTime(trnDate);
+    	c.set(Calendar.HOUR, 0);
+    	c.set(Calendar.MINUTE, 0);  
+    	c.set(Calendar.SECOND, 0);
+    	c.set(Calendar.AM_PM, Calendar.AM);
+    	start = c.getTime();
+    	
+    	c.set(Calendar.HOUR, 11);
+    	c.set(Calendar.MINUTE, 59);
+    	c.set(Calendar.SECOND, 59);
+    	c.set(Calendar.AM_PM, Calendar.PM);
+    	end = c.getTime();
+    	
+    	String queryString = "select log.messageDateTime, log.reference1 from " +
+				"MessageLog log where " +
+				"log.storeId = :storeId and " +
+				"log.messageType = :messageType and " +
+				"log.messageDateTime > :start and log.messageDateTime < :end ";
+    	return getHibernateTemplate().findByNamedParam(queryString, new String[] {"storeId", "messageType", "start", "end"}, new Object[] {storeId, messageType, start, end});
+    }   
+    
+    public List getStoreMsgLog(String storeId,String msgFormat,String msgType,String ref1,String ref2,Date transDate) throws DataAccessException {
+    	SimpleDateFormat sfDate = new SimpleDateFormat("dd/MM/yyyy");
+		String dateStr = sfDate.format(transDate); 
+		Date dateUtil = null;
+		try {
+			dateUtil = sfDate.parse(dateStr);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+    	String msgClass = MessageLogConstant.MsgClass.OUTB;
+    	List result = new ArrayList();
+    	String queryString = " SELECT log.objectId,log.messageClass,log.storeId ,log.messageFormat , log.messageType ,log.reference1 , log.reference2  ,log.transactionDate " +
+    	  " FROM MessageLog log  " +
+		  " WHERE log.messageClass = :msgClass " +
+		  " AND log.storeId = :storeId " +
+		  " AND log.messageFormat = :msgFormat " +
+		  " AND log.messageType = :msgType " +
+		  " AND log.reference1 = :ref1 " +
+		  " AND log.transactionDate = :transDate ";
+    	  if(ref2 != null && !ref2.equals("")){
+    		  queryString = queryString+" AND log.reference2 = :ref2 ";
+    		  System.out.println("Query String : "+queryString);
+    		  
+    		  result =  (List)getHibernateTemplate().findByNamedParam(queryString, new String[] {"msgClass", "storeId", "msgFormat", "msgType","ref1","ref2","transDate"}, 
+    	    			new Object[] {msgClass, storeId, msgFormat, msgType,ref1,ref2, dateUtil});
+    	  }else {
+    		  System.out.println("Query String : "+queryString);
+    		  result =  (List)getHibernateTemplate().findByNamedParam(queryString, new String[] {"msgClass", "storeId", "msgFormat", "msgType","ref1","transDate"}, 
+  	    			new Object[] {msgClass, storeId, msgFormat, msgType,ref1, dateUtil});
+    	  }
+
+    	
+    	
+		List msgLogList = new ArrayList(); 
+		if(result != null && result.size()>0){
+			for(int i = 0; i< result.size(); i++){   
+				MessageLog msgLog = new MessageLog();
+				Object [] array = (Object[]) result.get(i);
+				if(array[0] != null){msgLog.setObjectId(Long.parseLong(array[0].toString()));}
+				if(array[1] != null){msgLog.setMessageClass(array[1].toString());}
+				if(array[2] != null){msgLog.setStoreId(array[2].toString());}
+				if(array[3] != null){msgLog.setMessageFormat(array[3].toString());}
+				if(array[4] != null){msgLog.setMessageType(array[4].toString());}		
+				if(array[5] != null){msgLog.setReference1(array[5].toString());}	
+				if(array[6] != null){msgLog.setReference2(array[6].toString());}	
+				if(array[7] != null){
+					Object ob7 = array[7];
+					Date trnDate = (Date)ob7;
+					msgLog.setTransactionDate(trnDate);
+				}
+				msgLogList.add(msgLog);
+			}
+		}
+		return  msgLogList;
+    }
+
+	public void createWSLog(WSLog wsLog) {
+		if(wsLog.getMessage1()!=null && wsLog.getMessage1().length()>40){
+			wsLog.setMessage1(wsLog.getMessage1().substring(0, 39));
+		}
+		if(wsLog.getXML()!=null && wsLog.getXML().length()>4000){
+			wsLog.setXML(wsLog.getXML().substring(0, 3999));
+		}
+		getHibernateTemplate().save(wsLog);
+		
+	}
+	
+	public void createErrorMessageLog(ErrorMessageLog log) throws DataAccessException {
+		getHibernateTemplate().save(log);
+	}
+	
+	public ErrorMessageLog getErrorMessageLog(String messageLogId) throws DataAccessException {
+		return (ErrorMessageLog)getHibernateTemplate().get(ErrorMessageLog.class, messageLogId);
+	}
+
+	public List getErrorMessageLogs(String storeId, String msgFormat, String msgType, String ref1, String ref2, Date transDate) throws DataAccessException {
+		SimpleDateFormat sfDate = new SimpleDateFormat("dd/MM/yyyy");
+		String dateStr = sfDate.format(transDate); 
+		Date dateUtil = null;
+		try {
+			dateUtil = sfDate.parse(dateStr);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		String queryString = " SELECT log.objectId, log.storeId, log.reference1, log.reference2, log.messageFormat, log.messageType, log.errorType, log.messageDateTime, log.transactionDate, log.errorMessage " +
+			" FROM ErrorMessageLog log  " +
+			" WHERE log.storeId = :storeId " +
+			" AND log.messageFormat = :msgFormat " +
+			" AND log.messageType = :msgType " +
+			" AND log.reference1 = :ref1 " +
+			" AND log.reference2 = :ref2 " +
+			" AND log.transactionDate = :transDate ";
+		
+		List result = (List)getHibernateTemplate().findByNamedParam(
+				queryString,
+				new String[] {"storeId", "msgFormat", "msgType","ref1","ref2","transDate"},
+				new Object[] {storeId, msgFormat, msgType,ref1,ref2, dateUtil});
+		
+		List list = new ArrayList(); 
+		if(result != null && result.size()>0){
+			for(int i = 0; i< result.size(); i++){   
+				ErrorMessageLog errorMessageLog = new ErrorMessageLog();
+				Object [] array = (Object[]) result.get(i);
+				if(array[0] != null){errorMessageLog.setObjectId(Long.parseLong(array[0].toString()));}
+				if(array[1] != null){errorMessageLog.setStoreId(array[1].toString());}
+				if(array[2] != null){errorMessageLog.setReference1(array[2].toString());}
+				if(array[3] != null){errorMessageLog.setReference2(array[3].toString());}
+				if(array[4] != null){errorMessageLog.setMessageFormat(array[4].toString());}
+				if(array[5] != null){errorMessageLog.setMessageType(array[5].toString());}
+				if(array[6] != null){errorMessageLog.setErrorType(array[6].toString());}
+				if(array[7] != null){errorMessageLog.setMessageDateTime((Date)array[7]);}
+				if(array[8] != null){errorMessageLog.setTransactionDate((Date)array[8]);}
+				if(array[9] != null){errorMessageLog.setErrorMessage(array[9].toString());}
+				list.add(errorMessageLog);
+			}
+		}
+		return  list;
+	}
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="PromotionHistory" table="PRMTN_HISTORY">
+		<id name="objectId" column="PRMTN_HISTORY_OID" type="long"/>
+		<property name="promotionOid" column="PRMTN_OID" type="long"/>
+		<property name="promotionId" column="PRMTN_ID" type="string"/>
+		<property name="lastUpdateDate" column="UPD_DTTM" type="timestamp"/>
+		<property name="updateUserName" column="UPD_USER_NM" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<property name="remark" column="REMARK" type="string" />
+	</class>
+</hibernate-mapping>

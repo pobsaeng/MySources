@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="PromotionPremiumRedemption" table="PRMTN_PREMIUM_RDPTN">
+		<id name="objectId" column="PRMTN_PREMIUM_RDPTN_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">PRMTN_PREMIUM_RDPTN_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="promotionRedemption" column="PRMTN_RDPTN_OID" lazy="false" not-null="true"/>
+		<property name="promotionId" column="PRMTN_ID" type="string"/>
+		<property name="promotionName" column="PRMTN_NM" type="string"/>
+		<property name="tenderReference" column="TENDER_REF" type="string"/>
+		<property name="creditCardRangeName" column="CREDIT_CARD_RANGE_NM" type="string"/>
+		<many-to-one name="promotionArticleType" column="PRMTN_ARTC_TYP_ID" lazy="false" not-null="true"/>
+		<property name="promotionArticleId" column="PRMTN_ARTC_ID" type="string"/>
+		<property name="description" column="PRMTN_ARTC_DSC" type="string"/>
+		<property name="eligibleQuantity" column="ELIGIBLE_QTY" type="big_decimal"/>
+		<property name="redeemedQuantity" column="REDEEMED_QTY" type="big_decimal"/>
+		<property name="lastestRedeemedQuantity" column="LASTEST_REDEEMED_QTY" type="big_decimal"/>
+		<property name="returnedQuantity" column="RETURNED_QTY" type="big_decimal"/>
+		<property name="changedQuantity" column="CHANGED_QTY" type="big_decimal"/>
+		<property name="cancelledQuantity" column="CANCELLED_QTY" type="big_decimal"/>
+		<property name="nextRedemptionDate" column="NEXT_RDPTN_DT" type="date"/>
+		<property name="remark" column="REMARK" type="string"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="LAST_UPD_USER_ID" type="timestamp"/>
+		<property name="lastUpdateUserName" column="LAST_UPD_USER_NM" type="string"/>
+		<property name="recvFrom" column="RECV_FROM" type="string"/>
+		<bag name="itemRedemptionHistories" inverse="true" lazy="false" cascade="all">
+			<key column="PRMTN_PREMIUM_RDPTN_OID"/>
+			<one-to-many class="ItemRedemptionHistory"/>
+		</bag>
+	</class>
+</hibernate-mapping>

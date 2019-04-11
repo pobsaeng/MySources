@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.vendorcoupon">
+	<class name="transactionVendorCouponItem" table="TRN_VENDOR_COUPON_ITEM">
+		<composite-id name="transactionVendorCouponItemId" class="TransactionVendorCouponItem$Id">
+			<key-property name="physicalYear" column="PHYSICAL_YEAR" type="string"/>
+			<key-property name="physicalMonth" column="PHYSICAL_MONTH" type="string"/>
+			<key-property name="storeId" column="STORE_ID" type="string"/>
+			<key-property name="vendorId" column="VENDOR_ID" type="string"/>
+			<key-property name="postingDate" column="POSTING_DT" type="date"/>
+		</composite-id>
+		<property name="physicalYear" column="PHYSICAL_YEAR" type="string"/>
+		<property name="physicalMonth" column="PHYSICAL_MONTH" type="string"/>
+		<many-to-one name="storeId" column="STORE_ID" lazy="false" not-null="true"/>
+		<many-to-one name="vendorId" column="VENDOR_ID" lazy="false" not-null="false" />
+		<property name="postingDate" column="POSTING_DT" type="date"/>
+		<property name="couponItemAmount" column="COUPON_AMT" type="big_decimal"/>
+		<many-to-one name="storeItemId" column="STORE_ID" lazy="false" not-null="true"/>
+		<property name="typeId" column="TYP_ID" type="string"/>	
+		<property name="ItemNo" column="ITEM_NO" type="string"/>	
+		
+	</class>
+
+</hibernate-mapping>

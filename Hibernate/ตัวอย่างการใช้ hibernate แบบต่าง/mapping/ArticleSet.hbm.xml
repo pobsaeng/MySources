@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.mch">
+	<class name="ArticleSet" table="ARTC_SET">
+		<composite-id name="articleSetId" class="ArticleSet$Id">
+			<key-property name="articleId" column="ARTC_SET_ID" type="string"/>
+			<key-property name="childArticleId" column="CHILD_ARTC_ID" type="string"/>
+			<key-property name="sellUnit" column="SELL_UNIT" type="string"/>
+		</composite-id>
+		<property name="quantity" column="QTY" type="big_decimal"/>
+    	<many-to-one name="salesSetArticle" column="ARTC_SET_ID" insert="false" update="false" cascade="none" not-null="true" lazy="false"/>
+    	<many-to-one name="childArticle" column="CHILD_ARTC_ID" insert="false" update="false" cascade="none" not-null="true" lazy="false"/>		
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="refIDocNo" column="REF_IDOC_NO" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

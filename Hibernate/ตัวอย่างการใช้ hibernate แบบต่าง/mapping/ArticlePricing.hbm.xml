@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.mch">
+	<class name="ArticlePricing" table="ARTC_PRICING">
+		<id name="objectId" column="PRICING_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">ARTC_PRICING_SEQ</param>
+			</generator>
+		</id>	
+		<many-to-one name="article" column="ARTC_ID" lazy="false" not-null="true"/>
+		<property name="sellUnit" column="SELL_UNIT" type="string"/>
+		<many-to-one name="priceConditionType" column="PRICE_COND_TYP_ID" lazy="false" not-null="true"/>
+		<many-to-one name="store" column="STORE_ID" lazy="false" not-null="true"/>
+		<property name="isScalingPrice" column="IS_SCALING_PRICE" type="yes_no"/>        
+		<property name="sapNo" column="SAP_EVENT_NO" type="string"/>        
+		<property name="unitPrice" column="UNIT_PRICE" type="big_decimal"/>        
+		<property name="startDate" column="START_DT" type="date"/>        
+		<property name="endDate" column="END_DT" type="date"/>        
+		<property name="createDate" column="CREATE_DTTM" type="timestamp"/>        
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="refIDocNo" column="REF_IDOC_NO" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<bag name="scalingPrices" inverse="true" lazy="false" cascade="all">
+			<key column="PRICING_OID" not-null="true"/>
+			<one-to-many class="ScalingPrice"/>
+		</bag>
+	</class>
+</hibernate-mapping>

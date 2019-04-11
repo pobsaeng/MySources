@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.cashier">
+	<class name="CashierTenderRefDetail" table="CSH_TENDER_REF_DETAIL">
+		<id name="objectId" column="TENDER_REF_DETAIL_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">CSH_TENDER_REF_DETAIL_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="cashierTenderRef" column="TENDER_REF_OID" lazy="false" not-null="true"/>
+		<property name="tenderRefNo" column="TENDER_REF_NO" type="string"/>
+		<property name="tenderRefValue" column="TENDER_REF_VALUE" type="big_decimal"/>
+		<property name="tenderRefTenderId" column="TENDER_REF_TENDER_ID" type="string"/>
+		<property name="tenderRefExpireDate" column="TENDER_REF_EXPIRE_DATE" type="timestamp"/>
+		<property name="tenderRefInfo" column="TENDER_REF_INFO" type="string"/>
+	</class>
+</hibernate-mapping>

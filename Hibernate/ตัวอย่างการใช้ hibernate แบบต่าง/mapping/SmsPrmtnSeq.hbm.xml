@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 5, 2013 10:36:30 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+    <class name="SmsPrmtnSeq" table="sms_prmtn_seq" >
+        <id name="smsPrmtnId" type="string">
+            <column name="sms_prmtn_id"  />
+        </id>
+        <property name="prmtnSeq" type="long">
+            <column name="prmtn_seq" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

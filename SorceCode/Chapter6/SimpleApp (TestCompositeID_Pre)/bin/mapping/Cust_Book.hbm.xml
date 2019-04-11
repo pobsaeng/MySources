@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="model.Cust_Book" table="Cust_Book" >
+	<composite-id name = "id" class ="model.Cust_Book_ID">		
+			<key-property name="custid" column="adcustid" type="long"/>
+			<key-property name="bookid" column="adbookid" type="long"/>
+  	</composite-id>
+	<property name="comment" length="50" not-null = "true" column = "chvcmt" />
+	<many-to-one name="customer" column="adcustid" insert="false" update="false" not-null="true"/>
+	<many-to-one name="book" column="adbookid" insert="false" update="false" not-null="true"/>
+	
+	
+</class>
+</hibernate-mapping>

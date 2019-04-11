@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.mch">
+	<class name="MCH" table="MCH">
+		<id name="mchId" column="MCH_ID" type="string"/>
+		<property name="name" column="MCH_NM" type="string"/>
+		<property name="level" column="MCH_LV" type="integer"/>
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+		<many-to-one name="parentMCH" column="PARNT_MCH_ID" cascade="none" lazy="false"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="refIDocNo" column="REF_IDOC_NO" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<bag name="childMCHs" table="MCH" cascade="save-update" inverse="true" lazy="true">
+			<key column="PARNT_MCH_ID" />
+			<one-to-many class="MCH" />
+		</bag>
+		<bag name="articles" lazy="true" inverse="true" cascade="all">
+			<key column="MCH_ID" />
+			<one-to-many class="Article" />
+		</bag>
+	</class>
+</hibernate-mapping>

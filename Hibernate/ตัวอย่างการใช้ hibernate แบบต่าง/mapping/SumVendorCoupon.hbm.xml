@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.vendorcoupon">
+	<class name="SumVendorCoupon" table="SUM_VENDOR_COUPON">
+		<id name="sumVendorCouponId" column="SUM_VEMDOR_COUPON_ID" type="string"/>
+		<property name="transactionDate" column="TRN_DT" type="date"/>
+		<many-to-one name="storeId" column="STORE_ID" lazy="false" not-null="true"/>
+		<many-to-one name="vendorId" column="VENDOR_ID" lazy="false" not-null="false" />
+		<property name="promotionId" column="PRMTN_ID" type="string"/>
+		<property name="ticketNo" column="TICKET_NO" type="string"/>
+		<property name="posId" column="POS_ID" type="string"/>
+		<property name="vendorName" column="VENDOR_NM" type="string"/>
+		<property name="promotionName" column="PRMTN_NM" type="string"/>
+		<property name="couponAmount" column="COUPON_AMT" type="big_decimal"/>
+		<property name="documentNo" column="DOCUMENT_NO" type="string"/>
+		<property name="interfaceDate" column="INF_DTTM" type="timestamp"/>
+		<property name="typeId" column="TYP_ID" type="string"/>
+		<property name="articleId" column="ARTC_ID" type="string"/>
+		<property name="articleDescription" column="ARTC_DSC" type="string"/>
+		<property name="eligibleQty" column="ELIGIBLE_QTY" type="big_decimal"/>
+		<property name="totalCouponAmount" column="TOT_COUPON_AMT" type="big_decimal"/>
+		
+		<bag name="sumVendorCouponItem" lazy="true" cascade="delete" inverse="true">
+			<key column="SumVendorCouponItemId" not-null="true"/>
+			<one-to-many class="SumVendorCouponItem"/>
+		</bag>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.cashier">
+	<class name="CashRateChargeTender" table="CSH_RATE_CHARGE_TENDER">
+		<id name="objectId" column="CSH_RATE_CHARGE_TENDER_OID" type="long"/>			
+		<property name="tenderId" column="TENDER_ID" type="string"/>
+		<property name="rateFrom" column="RATE_FROM" type="date"/>
+		<property name="rateTo" column="RATE_TO" type="date"/>
+		<property name="rateType" column="CSH_RATE_CHARGE_TENDER_TYP" type="string"/>
+		<property name="rate" column="RATE" type="big_decimal"/>
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>		
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>	
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>	
+		<property name="lastUpdateUser" column="UPDATE_USER_ID" type="string"/>
+		<property name="refPubId" column="REF_PUB_ID" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+	</class>
+</hibernate-mapping>

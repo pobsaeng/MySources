@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="Sequence" table="SEQ">
+		<id name="sequenceId" column="SEQ_ID" type="long"/>
+		<version name="version" column="VERSION"/>
+		<property name="sequenceName" column="SEQ_NM" type="string"/>
+		<property name="increment" column="INC" type="integer"/>
+		<property name="minValue" column="MIN_VAL" type="integer"/>
+		<property name="maxValue" column="MAX_VAL" type="integer"/>
+		<property name="start" column="SEQ_START" type="integer"/>
+		<property name="cache" column="SEQ_CACHE" type="integer"/>
+	</class>
+</hibernate-mapping>

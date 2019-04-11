@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.cashier">
+	<class name="CashierTransaction" table="CSH_TRN">
+		<id name="objectId" column="CSH_TRN_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">CSH_TRN_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="store" column="STORE_ID" lazy="false" not-null="true"/>
+		<property name="userId" column="USER_ID" type="string"/>
+		<property name="posId" column="POS_ID" type="string"/>
+		<property name="transactionDate" column="TRN_DT" type="date"/>
+		<many-to-one name="cashierType" column="CSH_TRN_TYP_ID" lazy="false" not-null="true"/>
+		<property name="transactionAmount" column="TRN_AMT" type="big_decimal"/>
+		<property name="paymentReceivedAmount" column="PYMT_RECV_AMT" type="big_decimal"/>
+		<property name="referenceInfo" column="REF_INFO" type="string"/>
+		<property name="creditCardExpiredDate" column="CR_CARD_EXP_DT" type="string"/>
+		<property name="creditCardApprovalCode" column="CR_CARD_APPR_CD" type="string"/>
+		<property name="isCCPaymentViaEDC" column="IS_CC_PYMT_VIA_EDC" type="yes_no"/>
+		<property name="authUserID" column="AUTH_USER_ID" type="string"/>
+		<property name="promotionId" column="PRMTN_ID" type="string"/>
+		<property name="chargeAmount" column="CHARGE_AMT" type="big_decimal"/>
+		<property name="returnAmount" column="RETURN_AMT" type="big_decimal"/>
+		<property name="hirePurchaseNo" column="HPC_NO" type="string"/>
+		
+		<many-to-one name="salesTransaction" column="SALES_TRN_OID" lazy="false" not-null="false"/>
+		<many-to-one name="tender" column="TENDER_ID" lazy="false" not-null="true"/>
+		<bag name="cashierTransactionItem" inverse="true" lazy="true" cascade="all">
+			<key column="CSH_TRN_OID" not-null="true"/>
+			<one-to-many class="CashierTransactionItem"/>
+		</bag>		
+	</class>
+</hibernate-mapping>

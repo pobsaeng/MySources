@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="BatchInStore" table="BATCH_IN_STORE">
+		<composite-id name="batchInStoreId" class="BatchInStore$Id">
+			<key-property name="storeId" column="STORE_ID" type="string"/>
+			<key-property name="articleNo" column="ARTC_NO" type="string"/>
+			<key-property name="batch" column="BATCH" type="string"/>
+		</composite-id>
+		<property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

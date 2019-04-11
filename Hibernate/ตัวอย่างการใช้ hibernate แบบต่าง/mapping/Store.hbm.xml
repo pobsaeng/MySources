@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="Store" table="STORE">
+		<id name="storeId" column="STORE_ID" type="string"/>
+		<property name="name" column="STORE_NM" type="string"/>
+		<property name="address1" column="STORE_ADDR_1" type="string"/>
+		<property name="address2" column="STORE_ADDR_2" type="string"/>
+		<property name="address3" column="STORE_ADDR_3" type="string"/>
+		<property name="zipCode" column="ZIP_CODE" type="string"/>
+		<property name="taxId" column="TAX_ID" type="string"/>
+		<property name="phoneNo1" column="PHONE_NO_1" type="string"/>
+		<property name="phoneNo2" column="PHONE_NO_2" type="string"/>
+		<property name="phoneNo3" column="PHONE_NO_3" type="string"/>
+		<property name="faxNo1" column="FAX_NO_1" type="string"/>
+		<property name="faxNo2" column="FAX_NO_2" type="string"/>
+		<property name="startDate" column="START_DT" type="date"/>
+		<property name="endDate" column="END_DT" type="date"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastUpdateUser" column="LAST_UPD_USER" type="string"/>
+		<property name="lastPublishedUserName" column="LAST_PUB_USER_NM" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<property name="storeAbbNm" column="ABB_NM" type="string"/>
+		<property name="salesOrganize" column="SALES_ORG" type="string"/>
+		<property name="storeTaxNo" column="STORE_TAX_NO" type="string"/>
+		<many-to-one name="province" column="PROVINCE_OID" lazy="false" not-null="true"/>
+		<many-to-one name="district" column="DISTRICT_ID" lazy="false" not-null="false"/>
+		
+		
+	</class>
+</hibernate-mapping>

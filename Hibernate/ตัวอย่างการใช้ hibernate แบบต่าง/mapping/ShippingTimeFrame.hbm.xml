@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="ShippingTimeFrame" table="M_DS_SHIPTIMEFRAME">
+		<composite-id name="shippingTimeFrameId" class="ShippingTimeFrame$Id">
+			<key-property name="shippingPointId" column="SHIPPNT" type="string"/>
+			<key-property name="timeFrameId" column="TFNO" type="string"/>
+		</composite-id>
+		<many-to-one name="shippingPoint" column="SHIPPNT" lazy="false" insert="false" update="false" not-null="true"/> 
+		<many-to-one name="timeFrame" column="TFNO" lazy="false" insert="false" update="false" not-null="true"/> 
+		<property name="status" column="STATUS" type="character"/>
+		<property name="createDateTime" column="CRDATE" type="timestamp"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

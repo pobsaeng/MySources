@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="PromotionArticleOptionItem" table="PRMTN_ARTC_OPTN_ITEM">
+		<id name="objectId" column="OPTN_ITEM_OID" type="long"/>
+		<many-to-one name="promotionArticleOption" column="TIER_OPTN_OID" lazy="false" not-null="true"/>
+		<many-to-one name="promotionArticleType" column="PRMTN_ARTC_TYP_ID" lazy="false" not-null="true"/>
+		<property name="promotionArticleId" column="PRMTN_ARTC_ID" type="string"/>
+		<property name="articleDescription" column="ARTC_DSC" type="string"/>
+		<property name="quantity" column="QTY" type="integer"/>
+		<property name="unit" column="UNIT" type="string"/>
+		<property name="discountPriceValue" column="DSCNT_PRICE_VAL" type="big_decimal"/>
+		<property name="isVendorCoupon" column="IS_VENDOR_COUPON" type="yes_no"/>
+		<property name="vendorId" column="VENDOR_ID" type="string"/>
+		<property name="vendorName" column="VENDOR_NM" type="string"/>
+		<property name="isReceiveFromCS" column="IS_RECV_FROM_CS" type="yes_no"/>
+		<property name="isLimitMaxValue" column="IS_LIMIT_MAX_VAL" type="yes_no"/>
+		<property name="limitMaxValue" column="LIMIT_MAX_VAL" type="big_decimal"/>
+		<property name="isCMKT" column="IS_CMKT" type="yes_no"/>
+		<property name="isDiscountConditionDescription" column="IS_DSCNT_COND_TYP" type="yes_no"/>
+		<property name="articleId" column="ARTC_ID" type="string"/>
+		<property name="discountConditionDescription" column="DSCNT_COND_DESC" type="string"/>
+		<property name="isThisArticle" column="IS_THIS_ARTC" type="yes_no"/>
+		<property name="limitMinValue" column="LIMIT_MIN_VAL" type="big_decimal"/>		
+	</class>
+</hibernate-mapping>

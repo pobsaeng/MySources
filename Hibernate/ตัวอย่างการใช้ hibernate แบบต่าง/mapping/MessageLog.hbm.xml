@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.log">
+	<class name="MessageLog" table="MSG_LOG">
+		<id name="objectId" column="MSG_LOG_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">MSG_LOG_SEQ</param>
+			</generator>
+		</id>
+		<property name="messageClass" column="MSG_CLASS" type="string"/>
+		<property name="storeId" column="STORE_ID" type="string"/>
+		<property name="messageFormat" column="MSG_FORMAT" type="string"/>
+		<property name="messageType" column="MSG_TYP" type="string"/>
+		<property name="reference1" column="REF_1" type="string"/>
+		<property name="reference2" column="REF_2" type="string"/>
+		<property name="reference3" column="REF_3" type="string"/>
+		<property name="messageDateTime" column="MSG_DTTM" type="timestamp"/>
+		<property name="status" column="MSG_STS" type="character"/>
+		<property name="transactionDate" column="TRN_DT" type="date"/>
+		<property name="isCenter" column="CENTER" type="string"/>
+		<property name="isWS" column="WS" type="string"/>
+		<property name="isPOSDM" column="POSDM" type="string"/>
+	</class>
+</hibernate-mapping>

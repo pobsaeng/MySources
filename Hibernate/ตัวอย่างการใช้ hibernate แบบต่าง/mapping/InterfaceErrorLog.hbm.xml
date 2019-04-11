@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.log">
+	<class name="InterfaceErrorLog" table="INTERFACE_ERROR_LOG">
+		<id name="objectId" column="INV_TENDER_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">INTERFACE_ERROR_LOG_SEQ</param>
+			</generator>
+		</id>
+		<property name="interfaceNo" column="INL_NO" type="string"/>
+		<property name="interfaceType" column="INL_TYPE" type="string"/>
+		<property name="status" column="STATUS" type="string"/>
+		<property name="message1" column="MESSAGE_1" type="string"/>
+		<property name="message2" column="MESSAGE_2" type="string"/>
+		<property name="message3" column="MESSAGE_3" type="string"/>
+		<property name="message4" column="MESSAGE_4" type="string"/>
+		<property name="createUserId" column="CREATE_USER_ID" type="string"/>
+		<property name="createDate" column="CREATE_DTTM" type="timestamp"/>
+		<property name="lastUpdateUserId" column="LAST_UPD_USER_ID" type="string"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+	</class>
+</hibernate-mapping>

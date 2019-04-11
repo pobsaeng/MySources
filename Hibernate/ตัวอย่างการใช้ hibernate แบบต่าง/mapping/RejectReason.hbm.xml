@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="RejectReason" table="REJ_REASON">
+		<id name="rejectReasonId" column="REJ_REASON_ID" type="string"/>
+		<property name="description" column="REJ_REASON_DSC" type="string"/>
+	</class>
+</hibernate-mapping>

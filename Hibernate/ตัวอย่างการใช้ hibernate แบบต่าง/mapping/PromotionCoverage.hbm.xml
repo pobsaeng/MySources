@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="PromotionCoverage" table="PRMTN_CVRGE">
+		<composite-id name="promotionCoverageId" class="PromotionCoverage$Id">
+			<key-property name="promotionOid" column="PRMTN_OID" type="long"/>
+			<key-property name="partnerPromotionId" column="PARTNER_PRMTN_ID" type="string"/>
+		</composite-id>
+		<many-to-one name="promotion" column="PRMTN_OID" lazy="false" insert="false" update="false" not-null="true"/>
+	</class>
+</hibernate-mapping>

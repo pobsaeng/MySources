@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.authorization">
+	<class name="LimitType" table="LIMIT_TYP">
+		<id name="objectId" column="LIMIT_TYP_OID" type="long"/>
+		<property name="name" column="LIMIT_TYP_NM" type="string"/>        
+	</class>
+</hibernate-mapping>

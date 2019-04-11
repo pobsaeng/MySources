@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated Mar 7, 2013 4:04:54 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping package="com.ie.icon.domain.sale">
+	<class name="SpecialCharPeriod" table="SPC_CHAR_PERIOD">
+		<id name="spcCharPeriodOid" type="long" column="SPC_CHAR_PERIOD_OID" />
+		<property name="spcCharId" type="string">
+            <column name="SPC_CHAR_ID"  />
+        </property>
+		<property name="description" type="string">
+			<column name="DESCRIPTION" />
+		</property>
+		<property name="spcDesc" type="string">
+			<column name="SPC_DESC" />
+		</property>
+		<property name="spcChar" type="string">
+			<column name="SPC_CHAR" />
+		</property>
+		<property name="startDt" type="date">
+			<column name="START_DT" />
+		</property>
+		<property name="endDt" type="date">
+			<column name="END_DT" />
+		</property>
+		<property name="createDttm" type="timestamp">
+			<column name="CREATE_DTTM" />
+		</property>
+		<property name="createUserId" type="string">
+			<column name="CREATE_USER_ID" />
+		</property>
+		<property name="lastUpdDttm" type="timestamp">
+			<column name="LAST_UPD_DTTM" />
+		</property>
+		<property name="lastUpdUserId" type="string">
+			<column name="LAST_UPD_USER_ID" />
+		</property>
+		<property name="lastPubDttm" type="timestamp">
+			<column name="LAST_PUB_DTTM" />
+		</property>
+		<property name="refPubId" type="string">
+			<column name="REF_PUB_ID" />
+		</property>
+		<property name="isActive" type="yes_no">
+			<column name="IS_ACTIVE" />
+		</property>
+		<property name="storeCvrge" type="string">
+			<column name="STORE_CVRGE" />
+		</property>
+		<bag name="spcCharPeriodItems" inverse="true" lazy="true" cascade="all">
+			<key column="SPC_CHAR_PERIOD_OID"/>
+			<one-to-many class="SpecialCharPeriodItem" />
+		</bag>
+	</class>
+</hibernate-mapping>

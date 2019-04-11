@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain">
+	<class name="SystemConfiguration" table="SYS_CFG">
+		<id name="objectId" column="SYS_CFG_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">SYS_CFG_SEQ</param>
+			</generator>
+		</id>
+		<property name="description" column="SYS_CFG_DSC" type="string"/>
+		<property name="key" column="SYS_CFG_KEY" type="string"/>
+		<property name="value" column="SYS_CFG_VALUE" type="string"/>
+	</class>
+</hibernate-mapping>

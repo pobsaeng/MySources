@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="PromotionDefaultExclusion" table="PRMTN_DEFAULT_XCLSN">
+		<id name="objectId" column="XCLSN_OID" type="long"/>
+		<property name="promotionTypeId" column="PRMTN_TYP_ID" type="string"/>
+		<property name="exclusionType" column="XCLSN_TYP" type="string"/>
+		<property name="exclusionValue" column="XCLSN_VAL" type="string"/>
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+		<property name="isActive" column="IS_ACTIVE" type="yes_no" />
+		<property name="productHierarchyLevel" column="PROD_HIER_LV" type="integer" />
+	</class>
+</hibernate-mapping>

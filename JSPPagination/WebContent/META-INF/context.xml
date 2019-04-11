@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context path="/" debug="1" reloadable="true"
+ docBase='${catalina.home}/server/webapps/ROOT'>
+<!-- <ResourceLink global='jdbc/msplash' name='jdbc/msplash' type="javax.sql.Datasource"/> -->
+ 
+  <Resource name="jdbc/workshop_db" auth="Container" type="javax.sql.DataSource"
+	maxActive="130" maxIdle="50" maxWait="60000" removeAbandoned="true"  removeAbandonedTimeout="300" 
+	username="root" password="1234" driverClassName="com.mysql.jdbc.Driver"
+	url="jdbc:mysql://localhost:3306/workshop_db"/>
+   
+</Context>

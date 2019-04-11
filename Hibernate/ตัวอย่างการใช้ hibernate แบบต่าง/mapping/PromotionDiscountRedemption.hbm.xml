@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.promotion">
+	<class name="PromotionDiscountRedemption" table="PRMTN_DSCNT_RDPTN">
+		<id name="objectId" column="PRMTN_DSCNT_RDPTN_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">PRMTN_DSCNT_RDPTN_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="promotionRedemption" column="PRMTN_RDPTN_OID" lazy="false" not-null="true"/>
+		<property name="promotionId" column="PRMTN_ID" type="string"/>
+		<property name="vendorId" column="VENDOR_ID" type="string"/>
+		<property name="vendorName" column="VENDOR_NM" type="string"/>
+		<property name="discountType" column="DSCNT_TYP" type="string"/>
+		<property name="discountAmount" column="DSCNT_AMT" type="big_decimal"/>		
+	</class>
+</hibernate-mapping>

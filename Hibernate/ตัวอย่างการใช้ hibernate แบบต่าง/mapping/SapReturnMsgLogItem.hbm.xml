@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="SapReturnMsgLogItem" table="SAP_RET_MSG_LOG_ITEM">
+		<id name="objectId" column="SAP_RET_MSG_LOG_ITEM_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">SAP_RET_MSG_LOG_ITEM_SEQ</param>
+			</generator>
+		</id>    
+		<many-to-one name="sapReturnMsgLog" column="SAP_RET_MSG_LOG_OID" lazy="false" not-null="true"/>
+		<property name="sapFunctionName" column="SAP_FUNC_NM" type="string"/>
+		<property name="returnType" column="RET_TYP" type="string"/>
+		<property name="returnId" column="RET_ID" type="string"/>
+		<property name="returnNumber" column="RET_NUMBER" type="string"/>
+		<property name="returnMsg" column="RET_MSG" type="string"/>
+		<property name="returnLogNo" column="RET_LOGNO" type="string"/>
+		<property name="returnLogMsgNo" column="RET_LOGMSGNO" type="string"/>		
+		<property name="returnMsgV1" column="RET_MSGV1" type="string"/>
+		<property name="returnMsgV2" column="RET_MSGV2" type="string"/>
+		<property name="returnMsgV3" column="RET_MSGV3" type="string"/>
+		<property name="returnMsgV4" column="RET_MSGV4" type="string"/>
+				
+	</class>
+</hibernate-mapping>

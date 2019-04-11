@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.so">
+	<class name="SOARBilling" table="SO_AR_BILLING">
+		<id name="objectId" column="SO_AR_BILLING_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">SO_AR_BILLING_SEQ</param>
+			</generator>
+		</id>
+		<property name="sapBillingNo" column="SAP_BILL_NO" type="string"/>
+		<property name="billingDate" column="BILL_DATE" type="date"/>
+		<property name="billAmount" column="BILL_AMT" type="big_decimal"/>
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>
+		<property name="createUserId" column="CREATE_USER_ID" type="string"/>
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>
+		<many-to-one name="salesOrder" column="SALES_ORDER_OID" lazy="false" not-null="true"/>
+		<many-to-one name="promotionRedemption" column="PRMTN_RDPTN_OID" lazy="false" not-null="true"/>
+	</class>
+</hibernate-mapping>

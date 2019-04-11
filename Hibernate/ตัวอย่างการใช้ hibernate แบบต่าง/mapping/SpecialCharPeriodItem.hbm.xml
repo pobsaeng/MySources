@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 7, 2013 4:04:54 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping package="com.ie.icon.domain.sale">
+    <class name="SpecialCharPeriodItem" table="SPC_CHAR_PERIOD_ITEM">
+        <composite-id name="id" class="SpecialCharPeriodItemId">
+            <key-property name="spcCharPeriodOid" column="SPC_CHAR_PERIOD_OID" type="long" />
+            <key-property name="storeId" column="STORE_ID" type="string" />
+        </composite-id>
+        <many-to-one name="spcCharPeriod" column="SPC_CHAR_PERIOD_OID" insert="false" update="false" lazy="false" not-null="true" />
+    </class>
+</hibernate-mapping>

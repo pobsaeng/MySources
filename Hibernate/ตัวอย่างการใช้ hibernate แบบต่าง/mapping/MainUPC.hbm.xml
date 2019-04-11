@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.mch">
+	<class name="MainUPC" table="MAIN_UPC">
+		<id name="objectId" column="MAIN_UPC_OID" type="long">
+			<generator class="sequence">
+				<param name="sequence">MAIN_UPC_SEQ</param>
+			</generator>
+		</id>
+		<many-to-one name="article" column="ARTC_ID" lazy="false" not-null="true"/>
+		<property name="sellUnit" column="SELL_UNIT" type="string"/>
+		<property name="multiplier" column="BASE_UNIT_MULTI" type="big_decimal" />
+		<property name="mainUPC" column="MAIN_UPC" type="string" />
+		<property name="name" column="MAIN_UPC_NM" type="string" />
+		<property name="isDefault" column="ISDEFAULT" type="yes_no" />
+		<property name="isActive" column="IS_ACTIVE" type="yes_no" />
+		<property name="lastUpdateDate" column="LAST_UPD_DTTM" type="timestamp"/>
+		<property name="refIDocNo" column="REF_IDOC_NO" type="string"/>
+		<property name="lastPublishedDateTime" column="LAST_PUB_DTTM" type="timestamp"/>
+		<property name="referencePublishId" column="REF_PUB_ID" type="string"/>
+	</class>
+</hibernate-mapping>

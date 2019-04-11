@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ie.icon.domain.customer">
+	<class name="MemberRewardPrivilege" table="MBR_RWD_PRVLG">
+		<id name="objectId" column="MBR_RWD_PRVLG_OID" type="long"/>
+		<many-to-one name="memberRewardType" column="MBR_RWD_TYP_ID" lazy="false" not-null="true"/>
+		<property name="storeId" column="STORE_ID" type="string"/>
+		<many-to-one name="productHierarchy" column="PROD_HIER_OID" lazy="false" not-null="true"/>
+		<property name="hierarchyId" column="HIER_ID" type="string"/>        
+		<property name="isInclude" column="IS_INCLUDE" type="yes_no"/>        
+		<property name="baseCollectionAmount" column="BASE_COL_AMT" type="big_decimal"/>        
+		<property name="basePoint" column="BASE_PNT" type="big_decimal"/>        
+		<property name="isIncludePromotionPriceItems" column="IS_INCLUDE_PRMTN_PRICE_ITEMS" type="yes_no"/>
+		<property name="startDate" column="START_DT" type="date"/>        
+		<property name="endDate" column="END_DT" type="date"/>        
+		<property name="createUserName" column="CREATE_USER_NM" type="string"/>        
+		<property name="createDateTime" column="CREATE_DTTM" type="timestamp"/>        
+		<property name="lastModifyUser" column="LAST_MODIFY_USER" type="string"/>
+		<property name="lastModifyDateTime" column="LAST_MODIFY_DTTM" type="timestamp"/>
+	</class>
+</hibernate-mapping>
